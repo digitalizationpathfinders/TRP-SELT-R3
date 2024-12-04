@@ -1,17 +1,6 @@
 const steps = [];
 var active;
-let editMode = false;
-let editRow = null;
-const penIntEntryTable = document.getElementById('peninttable');
-const penIntTablePlaceholder = 'You have not added any penalties or interest.'
-//const penIntEntryTableTBody = penIntEntryTable.querySelector('tbody');
 
-const supportingDocTable = document.getElementById('documentsTable');
-const supportingDocTablePlaceholder = 'You have not uploaded any files.';
-// const supportingDocTableTBody = supportingDocTable.querySelector('tbody');
-
-const selectedFileNameDiv = document.getElementById('fileName');
-const selectedFileDefault = 'No file chosen.';
 
 let additionalYearFields = 0;
 
@@ -34,9 +23,6 @@ var dueTofinancialSituation = false;
 var individual = false;
 var business = false;
 
-const financialSupDoc = [false,false,false,false,false];
-const accidentSupDoc = [false,false,false,false];
-const disasterSupDoc = [false,false,false,false,false,false];
 
 const warnings = [false, false, false, false, false];
 
@@ -126,31 +112,9 @@ function navigateStep(direction) {
     }
 }
 
-function toggleLB(type) {
-    //modify this so the parameter is just the id and it doesnt need individual if statements for everything
+function toggleLB(lightboxID) {
+    document.getElementById(lightboxID).classList.toggle('open');
 
-    if (type === 'penaltyYear') {
-        document.querySelector('#penaltyYearLightbox').classList.toggle('open');
-    }
-    if (type === 'interestYear') {
-        document.querySelector('#interestYearLightbox').classList.toggle('open');
-    }
-    
-    if (type === 'charge') {
-        document.querySelector('#chargelightbox').classList.toggle('open');
-    }
-    if (type === 'assetsForInd') {
-        document.querySelector('#assetsForIndLightbox').classList.toggle('open');
-    }
-    if (type === 'assetsForBiz') {
-        document.querySelector('#assetsForBizLightbox').classList.toggle('open');
-    }
-    if (type === 'assetsForIndBiz') {
-        document.querySelector('#assetsForIndBizLightbox').classList.toggle('open');
-    }
-    if (type === 'responses'){
-        document.querySelector('#responses').classList.toggle('open');
-    }
 }
 
 function progressIcons(currentStepIcons)
@@ -226,9 +190,7 @@ function validateStep(step) {
                                 } else if (subTextInput && subTextInput.value === '') {
                                     subCheckboxValidity = false;
                                 }
-
                             }
-
                         });
                         if (!subCheckboxValidity) {
                             isValid = false;
@@ -255,110 +217,13 @@ function validateStep(step) {
                             }
                         }
                     }
-
-
-
-
                 }
             }
-
         });
     }
     return isValid;
 }
 
-// function penaltyOrInterest(penOrInt)
-// {
-//     if(penOrInt == "penalty")
-//     {
-//         if(penalty == true)
-//         {
-//             document.querySelector('#step1-penalty-question').classList.remove("hidden");
-//             document.querySelector('#step1-penalty-question').setAttribute("required",true);
-//             penalty = false;
-//         }
-//         else
-//         {
-//             document.querySelector('#step1-penalty-question').classList.add("hidden");
-//             document.querySelector('#step1-penalty-question').removeAttribute("required");
-//             penalty = true;
-//         }
-//     }
-
-//     if(penOrInt == "interest")
-//         {
-//             if(interest == true)
-//             {
-//                 document.querySelector('#step1-interest-question').classList.remove("hidden");
-//                 document.querySelector('#step1-interest-question').setAttribute("required",true);
-//                 interest = false;
-//             }
-//             else
-//             {
-//                 document.querySelector('#step1-interest-question').classList.add("hidden");
-//                 document.querySelector('#step1-interest-question').removeAttribute("required");
-//                 interest = true;
-//             }
-//         } 
-// }
-
-// Hides the Misdirect Panels (information panels for when the user isn't requesting relief of a penalty/interest) 
-// function hideMisdirectPanels(panelToShow)
-// {
-//     var elements = document.getElementsByClassName("misdirectPanels");
-//     var elementToShow = document.getElementById(panelToShow);
-    
-//     for(var i = 0; i < elements.length; i++)
-//     {
-//         elements[i].classList.add("hidden");
-//     }
-
-//     elementToShow.classList.remove("hidden");
-// }
-
-
-
-// Determines whether each subcheckbox from the Financial Hardship, Serious Illness, and Natural Disaster groups have been checked off
-// function summarySupportingDocumentation(document, optionNum)
-// {
-//     if(document == "financial")
-//     {
-//         if(financialSupDoc[optionNum] == false)
-//         {
-//             financialSupDoc.splice(optionNum, 1, true);
-//         }
-//         else
-//         {
-//             financialSupDoc.splice(optionNum, 1, false);
-//         }
-//     }
-    
-//     if(document == "accident")
-//     {
-//         if(accidentSupDoc[optionNum] == false)
-//         {
-//             accidentSupDoc.splice(optionNum, 1, true);
-//         }
-//         else
-//         {
-//             accidentSupDoc.splice(optionNum, 1, false);
-//         }
-//     }
-    
-//     if(document == "disaster")
-//     {
-//         if(disasterSupDoc[optionNum] == false)
-//         {
-//             disasterSupDoc.splice(optionNum, 1, true);
-//         }
-//         else
-//         {
-//             disasterSupDoc.splice(optionNum, 1, false);
-//         }
-//     }
-    
-//     //console.log(document,' ',optionNum,': ', financialSupDoc[optionNum]);
-// }
 
 function handleRadioSelection(group, selectedRadio) {
     // Hide content related to all radio buttons in the group
@@ -368,7 +233,6 @@ function handleRadioSelection(group, selectedRadio) {
         selectedRadio.dataset.everchecked = 'true';
     }
 
-
     radios.forEach(radio => {
        
         const targets = radio.dataset.target ? radio.dataset.target.split(',') : [];
@@ -377,14 +241,11 @@ function handleRadioSelection(group, selectedRadio) {
             const relatedContent = document.getElementById(targetId.trim());
         
             if (relatedContent) {
-                
                 if(selectedRadio.dataset.everchecked == undefined || selectedRadio.dataset.everchecked == 'false'){
-                  
                     relatedContent.classList.add('hidden');
                     clearContent(relatedContent);
                     clearDependentQuestions(relatedContent);
                 }
-                
         }
         });
         
@@ -395,8 +256,6 @@ function handleRadioSelection(group, selectedRadio) {
     // Show content related to the selected radio button
     const targetContent = document.getElementById(targetId.trim());
     if (targetContent) {
-        
-      
         targetContent.classList.remove('hidden');
     }
 });
@@ -428,11 +287,9 @@ function handleCheckboxToggle(checkbox) {
                         
                         // If either checkbox is checked, show the outstanding tax returns question
                         if (individualCheckbox.checked || businessCheckbox.checked) {
-                          
                             console.log("there should be nothing happening")
                           
                         } else {
-                 
                             relatedContent.classList.add('hidden');
                             clearContent(relatedContent);
                             // Recursively clear any dependent questions
@@ -445,23 +302,16 @@ function handleCheckboxToggle(checkbox) {
                         // Recursively clear any dependent questions
                         clearDependentQuestions(relatedContent);
                     }
-                   
              }
-         
         }
-
     });
 
     outCheck();
 }
 
-
-
 function clearOtherCheckboxes(currentCheckbox) {
     const group = currentCheckbox.dataset.group; // Get the group the current checkbox belongs to
     const isExclusive = currentCheckbox.dataset.exclusive === 'true';
-
-    
     const checkboxes = document.querySelectorAll(`input[type="checkbox"][data-group="${group}"]`);
     
     checkboxes.forEach(checkbox => {
@@ -478,7 +328,6 @@ function clearOtherCheckboxes(currentCheckbox) {
                     clearDependentQuestions(relatedContent); // Recursively clear dependencies
                 }
             }
-          
         }
     });
 }
@@ -491,35 +340,7 @@ function clearContent(element) {
         if (input.type === 'checkbox' || input.type === 'radio') {
             input.checked = false;
             
-        } else if(input.type === 'range') {
-          
-            if(input.id == 'penminslider'){
-                
-                input.value = 90;
-                minVal = 2014; 
-                setSliderValue(input,'penalty');
-                displayPenAlert();
-
-            }
-            else if(input.id == 'penmaxslider') {
-                input.value = 100;
-                maxVal = 2024; 
-                setSliderValue(input,'penalty');
-                displayPenAlert();
-            }
-            else if(input.id == 'intminslider') {
-                input.value = 90;
-                minVal = 2014; 
-                setSliderValue(input,'interest');
-                displayIntAlert();
-            }
-            else if(input.id == 'intmaxslider') {
-                input.value = 100;
-                maxVal = 2024; 
-                setSliderValue(input,'interest');
-                displayIntAlert();
-            }
-        }
+        } 
         else {
             input.value = '';
         }
@@ -544,6 +365,10 @@ function clearDependentQuestions(element) {
         });
         
     });
+
+    if(element.id == 'available-investments-panel'){
+        financialErrorCheck();
+    }
 }
 
 function checkBizType(){
@@ -593,62 +418,99 @@ function errorCheck(){
             reasonSelected = 0;
         }     
     }
-
+  
     if(reasonSelected == 0){
-        document.getElementById('available-investments-red').classList.add('hidden');
-        document.getElementById('available-investments-blue').classList.remove('hidden');
         document.getElementById('didntknow-red').classList.add('hidden');
         document.getElementById('didntknow-blue').classList.remove('hidden');
         document.getElementById('financial-other-red').classList.add('hidden');
         document.getElementById('financial-other-blue').classList.remove('hidden');
         document.getElementById('supdocPanel2-red').classList.add('hidden');
         document.getElementById('supdocPanel2-blue').classList.remove('hidden');
+
+
     }
     else if(reasonSelected == 1){
-        document.getElementById('didntknow-red').classList.remove('hidden');
-        document.getElementById('didntknow-blue').classList.add('hidden');
+       
     
     }
     else if(reasonSelected == 2) {
-        document.getElementById('available-investments-red').classList.remove('hidden');
-        document.getElementById('available-investments-blue').classList.add('hidden');
+
         document.getElementById('financial-other-red').classList.remove('hidden');
         document.getElementById('financial-other-blue').classList.add('hidden');
         document.getElementById('supdocPanel2-red').classList.remove('hidden');
         document.getElementById('supdocPanel2-blue').classList.add('hidden');
     } 
+    else if(reasonSelected == 3) {
+        document.getElementById('didntknow-red').classList.remove('hidden');
+        document.getElementById('didntknow-blue').classList.add('hidden');
+    } 
+}
+
+
+function financialErrorCheck() {
+ 
+    var availableAssets = document.querySelector('#available-investments-fieldset input[type=radio]:checked');
+    var abilityToBorrow = document.querySelector('#abilitytoborrow-fieldset input[type=radio]:checked');
+
+    const bannerRed = document.getElementById('available-investments-panel-red');
+    const bannerBlue = document.getElementById('available-investments-panel-blue');
+
+    if(availableAssets !== null){
+        if (availableAssets.value == 'Yes') {
+            bannerBlue.classList.remove('hidden');
+            }
+        else {
+            bannerBlue.classList.add('hidden');
+        }
+    }
+    if(abilityToBorrow !== null) {
+        if (abilityToBorrow.value == 'Yes') {
+            bannerRed.classList.remove('hidden');
+            bannerBlue.classList.add('hidden');
+            }
+        else if (abilityToBorrow.value == 'Unsure') {
+            bannerRed.classList.add('hidden');
+            bannerBlue.classList.remove('hidden');
+        }
+        else {
+            bannerRed.classList.add('hidden');
+        }
+    }
 }
 
 function documentsCheck() {
   
-    var reasons = document.querySelectorAll('#reasonsFieldset input[type="checkbox"]:checked, #current-financial-situation input[type="checkbox"]:checked');
+    var reasons = document.querySelectorAll('#circumstances-fieldset input[type="checkbox"]:checked,#cra-actions-fieldset input[type="checkbox"]:checked, #other-circumstances-fieldset input[type="radio"]:checked,#current-financial-situation input[type="checkbox"]:checked');
 
 
-    const tableEntries = {
+    const panels = {
         'financial-individual': 'financialIndividual',
         'financial-business': 'financialBusiness',
         'natural-disaster-checkbox': 'nd1',
         'fire-flood-checkbox': 'nd2',    
         'serious-illness-checkbox': 'si1',
-        'mental-distress-checkbox': 'si2',
-        'death-significant-checkbox': 'si3',
-        'death-representing-checkbox': 'si4',
+        'death-significant-checkbox': 'si2',
+        'death-representing-checkbox': 'si3',
         'civil-disturbance-checkbox': 'civ1',
         'cra-delay-checkbox': 'cd1',
         'cra-error-checkbox': 'ce1',
-        'extraordinary-circumstances-checkbox': 'oc1'
+        'bankerror-checkbox': 'oc1',
+        'thirdparty-checkbox': 'oc2',
+        'step2-othercirc-other': 'oc3'
     };
     // Hide all rows initially
-    for (const rowId in tableEntries) {
-        document.getElementById(tableEntries[rowId]).style.display = 'none';
+    for (const rowId in panels) {
+     
+        document.getElementById(panels[rowId]).classList.add('hidden');
     }
 
     // Show only the rows that correspond to the checked checkboxes
-    reasons.forEach(function(checkbox) {
-        const tableRowId = tableEntries[checkbox.id];
-        if (tableRowId) {
+    reasons.forEach(function(selection) {
+      
+        const panelId = panels[selection.id];
+        if (panelId) {
             
-            document.getElementById(tableRowId).style.display = 'table-row';
+            document.getElementById(panelId).classList.remove('hidden');
         }
     });
 }
@@ -658,31 +520,29 @@ function outCheck(){
   
     const selections = {
         misdirect: document.querySelectorAll('#misdirect-fieldset input[type=radio]:checked'),
-        unsureIfPenInt: document.querySelector('#step1-question1-unsure').checked,
+        penaltyOnly: document.querySelector('#step1-question1-pen').checked,
+        penaltyOver10: document.querySelector('#step1-penalty-over10').checked,
         reliefReason_extraordinaryCircumstances: document.querySelector('#step2-question2-beyondcontrol').checked,
         reliefReason_financialSituation: document.querySelector('#step2-question2-financialsituation').checked,
+        reliefReason_craActions: document.querySelector('#step2-question2-craactions').checked,
         reliefReason_incorrectCharge: document.querySelector('#step2-question2-ontime').checked,
-        reliefReason_none: document.querySelector('#step2-question2-none').checked,
         reliefSpecReason_didNotKnow: document.querySelector('#step2-othercirc-didnotknow').checked,
-        hasInvestments: document.querySelector('#available-investments-yes').checked,
         finHardshipOther: document.querySelector('#financial-other').checked,
-        noDocs: document.querySelector('#step3-no').checked
+        abilityToBorrowYes: document.querySelector('#abilitytoborrow-yes').checked,
+        noDocs: document.querySelector('#step3-no2').checked
         
     };
 
     const conditions = {
-        notHereForPenInt: selections.misdirect.length != 0 || selections.unsureIfPenInt,
-        penIntYearPre2014: penRedAlertShowing || intRedAlertShowing,
-        reasonForRequest: selections.reliefReason_incorrectCharge || selections.reliefReason_none || (selections.  reliefSpecReason_didNotKnow && selections.reliefReason_extraordinaryCircumstances && !selections.reliefReason_financialSituation),
+        notHereForPenInt: selections.misdirect.length != 0,
+        penaltyOnly_Over10Years: selections.penaltyOnly && selections.penaltyOver10,
+        reasonForRequest: selections.reliefReason_incorrectCharge || (selections.reliefSpecReason_didNotKnow && !selections.reliefReason_extraordinaryCircumstances && !selections.reliefReason_financialSituation && !selections.reliefReason_craActions),
         financialSituationNotSevere: selections.finHardshipOther && selections.reliefReason_financialSituation && !selections.reliefReason_extraordinaryCircumstances,
-        finHardshipOnlyHasInvestments: selections.hasInvestments && selections.reliefReason_financialSituation && !selections.reliefReason_extraordinaryCircumstances,
-        noDocsFinHardship: selections.reliefReason_financialSituation && !selections.reliefReason_extraordinaryCircumstances && selections.noDocs
+        noDocsFinHardship: selections.reliefReason_financialSituation && !selections.reliefReason_extraordinaryCircumstances && !selections.reliefReason_craActions && selections.noDocs
     
     };
-    
 
-    shouldRedirect = conditions.notHereForPenInt || conditions.reasonForRequest || conditions.finHardshipOnlyHasInvestments || conditions.financialSituationNotSevere || conditions.penIntYearPre2014 || conditions.noDocsFinHardship;
-   
+    shouldRedirect = conditions.notHereForPenInt || conditions.penaltyOnly_Over10Years || conditions.reasonForRequest || conditions.financialSituationNotSevere || conditions.penIntYearPre2014 || selections.abilityToBorrowYes  ||conditions.noDocsFinHardship;
 
     var nextBtn = active.querySelector(".next-btn");
     var misdirectBtn = active.querySelector(".misdirect-btn");
@@ -697,7 +557,6 @@ function outCheck(){
             misdirectBtn.classList.add('hidden');
         }
     }
-   
 
     errorCheck();
 }
@@ -731,11 +590,6 @@ document.addEventListener("DOMContentLoaded", function() {
             input.insertBefore(asterisk, input.firstChild);
         }
     });
-    // document.querySelectorAll('input').forEach(input => {
-    //     input.addEventListener('change', outCheck);
-    // });
-   
-
 
   // Function to show/hide based on radio buttons
   const radioGroups = document.querySelectorAll('[data-radio-group]');
@@ -757,114 +611,4 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 
-var minVal, maxVal;
 
-var penRedAlertShowing = false;
-var penBlueAlertShowing = false;
-var intRedAlertShowing = false;
-var intBlueAlertShowing = false;
-
-function setSliderValue(el, chargeType) {
-    
-    var sliderContainer = el.parentElement;
-    var minSlider, maxSlider;
-    
-    var fillLeft = sliderContainer.querySelector("#fill-left");
-    var fillRight = sliderContainer.querySelector("#fill-right");
-    var range = sliderContainer.querySelector("#range");
-    var handleLeft = sliderContainer.querySelector("#handle-left");
-    var handleRight = sliderContainer.querySelector("#handle-right");
-    var signLeft = sliderContainer.querySelector("#sign-left");
-    var signRight = sliderContainer.querySelector("#sign-right");
-
-    switch(chargeType){
-        
-        case "penalty":
-            
-            minSlider = document.getElementById("penminslider");
-            maxSlider = document.getElementById("penmaxslider");
-            
-            break;
-        case 'interest':
-            minSlider = document.getElementById("intminslider");
-            maxSlider = document.getElementById("intmaxslider");
-            
-            break;
-    }
-    if (el == minSlider){
-        el.value = Math.min(el.value, maxSlider.value);
-        var value =
-        (100 / (parseInt(el.max) - parseInt(el.min))) * parseInt(el.value) -
-        (100 / (parseInt(el.max) - parseInt(el.min))) * parseInt(el.min);
-    
-        fillLeft.style.width = value + "%";
-        range.style.left = value + "%";
-        handleLeft.style.left = value + "%";
-        signLeft.style.left = value + "%";
-        minVal = 1924 + parseInt(el.value);
-        signLeft.childNodes[1].innerHTML = minVal;
-    }
-    else {
-        el.value = Math.max(el.value, minSlider.value);
-        var value =
-            (100 / (parseInt(el.max) - parseInt(el.min))) * parseInt(el.value) -
-            (100 / (parseInt(el.max) - parseInt(el.min))) * parseInt(el.min);
-        
-        fillRight.style.width = 100 - value + "%";
-        range.style.right = 100 - value + "%";
-        handleRight.style.left = value + "%";
-        signRight.style.left = value + "%";
-        maxVal = 1924 + parseInt(el.value);
-        signRight.childNodes[1].innerHTML = maxVal;
-    }
-}
-function displayPenAlert(){
-    var penaltyAlertBlue = document.getElementById("penaltyPanel-blue");
-    var penaltyAlertRed = document.getElementById("penaltyPanel-red");
-  
-    if(minVal < 2014 && maxVal < 2014){
-        penaltyAlertRed.classList.remove('hidden');
-        penaltyAlertBlue.classList.add('hidden');
-        penRedAlertShowing = true;
-        penBlueAlertShowing = false;
-        console.log(penRedAlertShowing)
-      }
-    else if(minVal < 2014 && maxVal >= 2014){
-        penaltyAlertRed.classList.add('hidden');
-        penaltyAlertBlue.classList.remove('hidden');
-        penRedAlertShowing = false;
-        penBlueAlertShowing = true;
-    }
-      else {
-        penaltyAlertRed.classList.add('hidden');
-        penaltyAlertBlue.classList.add('hidden');
-        penRedAlertShowing = false;
-        penBlueAlertShowing = false;
-    }
-    outCheck();
-}
-
-function displayIntAlert(){
-    var interestAlertBlue = document.getElementById("interestPanel-blue");
-    var interestAlertRed = document.getElementById("interestPanel-red");
-
-    if(minVal < 2014 && maxVal < 2014){
-        interestAlertRed.classList.remove('hidden');
-        interestAlertBlue.classList.add('hidden');
-        intRedAlertShowing = true;
-        intBlueAlertShowing = false;
-      }
-    else if(minVal < 2014 && maxVal >= 2014){
-        interestAlertRed.classList.add('hidden');
-        interestAlertBlue.classList.remove('hidden');
-        intRedAlertShowing = false;
-        intBlueAlertShowing = true;
-    }
-    else {
-        interestAlertRed.classList.add('hidden');
-        interestAlertBlue.classList.add('hidden');
-        intRedAlertShowing = false;
-        intBlueAlertShowing = false;
-    }
-    outCheck();
-}

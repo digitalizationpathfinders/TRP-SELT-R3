@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <!-- The text inside the title tag, is what appears on the tab in the browser -->
+      <title>SELT</title>
+      <meta charset="UTF-8">
+      <!-- These are CSS files that are being linked to this page. CSS files are documents that tell the webpage how certain things should look - like colours, sizes, fonts, etc. You can have multiple style documents, and whichever is lowest in the order, will overwrite anything that came before it. We will always have a base style document used on every page, but we can have CSS files that are specific to one page if we want. -->
+      <link rel="stylesheet" type="text/css" href="styles/base.css">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+         rel="stylesheet">
+   </head>
+   <!-- Everything that you want to be seen or used on your page goes inside the body tags -->
+   <body>
+      <header>
+         <div class="header-content">
+            <div>
+               <img src="https://www.canada.ca/etc/designs/canada/wet-boew/assets/sig-blk-en.svg">
+            </div>
+            <a>Français</a>
+         </div>
+      </header>
+      <div class="stepper">
+        <!-- <h5>Taxpayer relief - Cancel or waive penalties and interest</h5> -->
+        <h1>Taxpayer Relief Self-Evaluation and Learning Tool (SELT)</h1>
+        
+                <div class="header-content" style="margin:0 !important; padding:0;">
+                    <h3 style="margin:0 !important; padding:0 !important;"> Summary</h3>
+                    <a class="printsavelink" href="#" onclick="window.print()">Print/Save</a>
+                </div>
+                <div>
+                   
+                    
+                    <div class="panel-data">
+                    <h5>Provide general information</h5>
+                    <div class="row">
+                        <div class="label">What type of charge would you like to have cancelled?</div>
+                        <div class="valueWI">xxxxxxxxxxxxxxx</div>
+                    </div>
+                    <div class="row">
+                        <div class="label"> Would it be your initial relief request to CRA to have this charge cancelled?</div>
+                        <div class="valueWI">XXXX</div>
+                    </div>
+                    <div class="row">
+                        <div class="label">When was the tax year or period that you received the penalty or penalties?</div>
+                        <div class="valueWI">XXXX</div>
+                    </div>
+                    <div class="row">
+                        <div class="label">When was the tax year or period that you accrued interest or interests?</div>
+                        <div class="valueWI">XXXX</div>
+                    </div>
+                    <br>
+                    <h5>Describe your situation</h5>
+                    <div class="row">
+                        <div class="label">I am requesting relief of penalties and interest due to:</div>
+                        <div class="valueWI">xxxxxxxxxxxxxxx</div>
+                    </div>
+                    <div class="row">
+                        <div class="label">What was the circumstance that prevented you from meeting your tax obligations?</div>
+                        <div class="valueWI">xxxxxxxxxxxxxxx</div>
+                    </div>
+                    <div class="row">
+                        <div class="label">Do you have any outstanding tax returns that have yet to be filed with the CRA?</div>
+                        <div class="valueWI">---</div>
+                    </div>
+                    <div class="row">
+                        <div class="label">Do you have any assets that you could dispose of to pay the debt to CRA in full?</div>
+                        <div class="valueWI">---</div>
+                    </div>
+                    <div class="row">
+                        <div class="label">Do you have the ability to borrow to pay the debt to CRA in full?</div>
+                        <div class="valueWI">---</div>
+                    </div>
+                    <br>
+                    <h5>Learn about supporting documents</h5>
+                    <div class="panel" id="nd1">
+                        Your responses indicate that your situation may belong under the <strong->----------</strong> category.<br>
+                        We recommend including the following supporting documents if you apply:
+                        <ul>
+                            <li>--------</li>
+                            <li>--------</li>
+                            <li>--------</li>
+                            <li>--------</li>
+                        </ul>
+                       </div>
+                    
+                    </div>
+                 
+                
+
+                    
+                </div>
+        
+         
+
+        
+                <br><br>
+                <button class="tertiary" type="button" onclick="navigateStep('previous')">Back</button>
+                <button class="primary" type="button">Return to Canada.ca</button>
+                </div>
+            </div>
+        </div>
+      </div>
+      <script src="scripts.js"></script>
+      <script src="summary.js"></script>
+   </body>
+</html>

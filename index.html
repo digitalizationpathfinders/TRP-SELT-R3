@@ -20,1259 +20,1102 @@
          </div>
       </header>
       <div class="stepper">
-        <!-- <h5>Taxpayer relief - Cancel or waive penalties and interest</h5> -->
-        <h1>Taxpayer Relief Self-Evaluation and Learning Tool (SELT)</h1>
-        <div class="step active" id="step-byb">
+         <!-- <h5>Taxpayer relief - Cancel or waive penalties and interest</h5> -->
+         <h1>Taxpayer Relief Self-Evaluation and Learning Tool (SELT)</h1>
+         <div class="step" id="step-byb">
             <div class="step-header">
-                <div class="numbering">i<span class="material-icons completeNumbering" id ="bybIcon">check</span></div>
-                <h4>Before you begin</h4>
+               <div class="numbering">i<span class="material-icons completeNumbering" id ="bybIcon">check</span></div>
+               <h4>Before you begin</h4>
             </div>
             <div class="step-container">
-                <div class="step-content">
-                The CRA may grant taxpayer relief when an individual or business experience circumstances beyond their control that prevented them from meeting their tax obligations. 
-                <br><br>
-                Use this tool to find out if your situation may qualify for relief of penalties and/or interest and to help prepare you to fill out your taxpayer relief request.
-                <br><br><strong>Note:</strong> This tool does not save any data if you navigate away from this page.
-                <br><br>
-                <button class="primary" type="button" onclick="navigateStep('next')">Begin</button>
-                </div>
+               <div class="step-content">
+                  The CRA may grant relief of penalties and/or interest charges when an individual or business experiences circumstances beyond their control that prevent them from meeting their tax obligations.
+                  <br><br>
+                  Penalties and interest are generally charged when you file or pay late. Check your Notice of Assessment (NOA) or notice of reassessment to verify what type of charges you have. 
+                  <br><br>
+                  Use this tool to <strong>find out if your situation may qualify</strong>, and help prepare you to fill out your relief request. 
+                                  
+                  <br><br><strong>Note:</strong>This tool does not save any data if you navigate away from the page.
+                  <br><br>
+                  <button class="primary" type="button" onclick="navigateStep('next')">Begin</button>
+               </div>
             </div>
-        </div>
-        <div class="step" id="step-1">
+         </div>
+         <div class="step" id="step-1">
             <div class="step-header">
-                <div class="numbering">1<span class="material-icons completeNumbering" id="step1Icon">check</span></div>
-                <h4>Provide penalty and interest details</h4>
+               <div class="numbering">1<span class="material-icons completeNumbering" id="step1Icon">check</span></div>
+               <h4>Provide general information</h4>
             </div>
             <div class="step-container">
-                <div class="step-content">
-                <form id="step-1-form">
-                    <div class="full-width">
+               <div class="step-content">
+                  <form id="step-1-form">
+                     <div class="full-width">
                         <div class="required">Fields marked with asterisk (<span class="ast">*</span>) are required.</div>
-                        <!-- Q1: Are you requesting a relief of a penalty and/or interest? -->
+                        <!-- Q1:-->
                         <fieldset id="step1-question1-fieldset" data-radio-group required>
-                            <legend class="required-label"> Did you get charged a penalty or interest that you would like relief from?</legend>
-                            <div class="radio-group">
-                            <input type="radio" id="step1-question1-yes" name="step1-question1" value="Yes" data-target="relief-request-questions">
-                            <label for="step1-question1-yes">Yes</label>
-                            </div>
-                            <div class="radio-group">
-                            <input type="radio" id="step1-question1-no" name="step1-question1" value="No" data-target="nonrelief-request-questions">
-                            <label for="step1-question1-no">No</label>
-                            </div>
-                            <div class="radio-group">
-                            <input type="radio" id="step1-question1-unsure" name="step1-question1" value="Unsure"
-                                data-target="unsurePanel">
-                            <label for="step1-question1-no">Unsure</label>
-                            </div>
+                           <legend class="required-label">What type of charge would you like to have cancelled?<span onclick="toggleLB('chargelightbox');" class ="material-icons help">help</span> </legend>
+                           <div class="radio-group">
+                              <input type="radio" id="step1-question1-pen" name="step1-question1" value="Penalty" data-target="second-review-q, step1-penalty-question">
+                              <label for="step1-question1-pen">Penalty</label>
+                           </div>
+                           <div class="radio-group">
+                              <input type="radio" id="step1-question1-int" name="step1-question1" value="Interest" data-target="second-review-q, step1-interest-question">
+                              <label for="step1-question1-int">Interest</label>
+                           </div>
+                           <div class="radio-group">
+                              <input type="radio" id="step1-question1-both" name="step1-question1" value="Both penalty and interest" data-target="second-review-q, step1-penalty-question, step1-interest-question">
+                              <label for="step1-question1-both">Both penalty and interest</label>
+                           </div>
+                           <div class="radio-group">
+                              <input type="radio" id="step1-question1-other" name="step1-question1" value="Other"
+                                 data-target="nonrelief-request-questions">
+                              <label for="step1-question1-other">Other</label>
+                           </div>
                         </fieldset>
+                        <div class="lightbox-container" id="chargelightbox">
+                           <div class="lightbox">
+                              <div class="header">
+                                 <h3> <span class ="material-icons help2">help</span> What type of charge would you like to have cancelled?</h3>
+                                 <button class="tertiary" type="button" onclick="toggleLB('chargelightbox')">
+                                 <span class="material-icons">clear</span></button>
+                              </div>
+                              <div class="lightbox-content">
+                                 You can find penalties and interest charged on your Notice of Assessment (NOA).<br><br>
+                                 The “summary” section on your NOA shows any penalty and interest that were calculated, as well as your refund or amount owing. If you have a balance owing from a previous assessment, it will also appear here.                     
+                              </div>
+                              <div class="buttons">
+                                 <button class="tertiary close" type="button" onclick="toggleLB('chargelightbox')">Close</button>
+                              </div>
+                           </div>
+                        </div>
+                        <!-- Q2 -->
+                        <div id="second-review-q" class="hidden">
+                           <fieldset id="step1-question2-fieldset" data-radio-group required>
+                              <legend class="required-label">Would it be your initial relief request to CRA to have this charge cancelled?</legend>
+                              <div class="radio-group">
+                                 <input type="radio" id="step1-question2-yes" name="step1-question2" value="Yes, it is the first time I am asking relief for this specific charge" data-target="relief-request-questions">
+                                 <label for="step1-question2-yes">Yes, it would be the first time I am asking relief for this specific charge</label>
+                              </div>
+                              <div class="radio-group">
+                                 <input type="radio" id="step1-question2-no" name="step1-question2" value="No, I have previously received a decision from CRA and I want this decision reconsidered">
+                                 <label for="step1-question2-no">No, I have previously received a decision from CRA and I want this decision reconsidered</label>
+                              </div>
+                           </fieldset>
+                        </div>
                         <!-- TYPE OF CHARGE -->
                         <div id="relief-request-questions" class="hidden">
-                            <!-- Q1: What type of charge did you get?  -->
-                            <fieldset id="penalty-relief-fieldset" class=""   required>
-                            <legend class="required-label">
-                                What type of charge did you get?<span onclick="toggleLB('charge');" class ="material-icons help">help</span> 
-                            </legend>
-                            Select all that apply.
-                            <!-- Penalty Option -->
-                            <div class="checkbox-group">
-                                <input type="checkbox" id="charge-penalty" name="step1-penalty" value="Penalty"   data-target="step1-penalty-question">
-                                <div class="label-group">
-                                    <label>Penalty<br></label>
-                                </div>
-                            </div>
-                            <!-- Interest Option -->
-                            <div class="checkbox-group">
-                                <input type="checkbox" id="charge-interest" name="step1-interest" value="Interest"   data-target="step1-interest-question">
-                                <div class="label-group">
-                                    <label>Interest</label>
-                                </div>
-                            </div>
-                            </fieldset>
-                            <!-- IF USER SELECTS PENALTY -->
-                            <fieldset id="step1-penalty-question" class="hidden">
-                            <legend class="required-label">In what year(s) did you receive the penalty? <span onclick="toggleLB('penaltyYear');" class ="material-icons help"">help</span> </legend>
-                            Use the slider to select the tax year(s) in which you received the penalty.
-                            <div class="slider" id="slider-penalty">
-                                <div>
-                                    <div id="fill-left" style="width:70%;"></div>
-                                    <div id="fill-right" style="width:70%;"></div>
-                                    <div id="range"  style="left:90%;right:0%;"></div>
-                                    <span id="handle-left" class="thumb" style="left:90%;"></span>
-                                    <span id="handle-right" class="thumb" style="left:100%;"></span>
-                                    <div id="sign-left" class="sign" style="left:90%;">
-                                        <span id="value">2014</span>
-                                    </div>
-                                    <div id="sign-right" class="sign" style="left:100%;">
-                                        <span id="value">2024</span>
-                                    </div>
-                                </div>
-                                <input id="penminslider" type="range" tabindex="0" value="90" max="100" min="0" step="1" oninput="setSliderValue(this, 'penalty')" onchange="displayPenAlert()"/>
-                                <input id="penmaxslider" type="range" tabindex="0" value="100" max="100" min="0" step="1" oninput="setSliderValue(this, 'penalty')" onchange="displayPenAlert()"/>
-                            </div>
-                            <div class="subfield-wrapper hidden" id="penaltyPanel-red">
-                                <div class="alert">
+                           <!-- IF USER SELECTS PENALTY -->
+                           <fieldset id="step1-penalty-question" class="hidden" data-radio-group required>
+                              <legend class="required-label">When was the tax year or period that you received the penalty or penalties?<span onclick="toggleLB('penaltyYearLightbox');" class ="material-icons help"">help</span> </legend>
+                              <div class="radio-group">
+                                 <input type="radio" id="step1-penalty-lessthan10" name="step1-question3" value="Within the last 10 years">
+                                 <label for="step1-penalty-lessthan10">Within the last 10 years</label>
+                              </div>
+                              <div class="radio-group">
+                                 <input type="radio" id="step1-penalty-over10" name="step1-question3" value="More than 10 years ago" data-target="penalty-panel-red">
+                                 <label for="step1-penalty-over10">More than 10 years ago</label>
+                              </div>
+                              <div class="radio-group">
+                                 <input type="radio" id="step1-penalty-both" name="step1-question3" value="Both within the last 10 years and more than 10 years ago" data-target="penalty-panel-blue">
+                                 <label for="step1-penalty-both">Both within the last 10 years and more than 10 years ago</label>
+                              </div>
+                              <div class="subfield-wrapper hidden" id="penalty-panel-red">
+                                 <div class="alert">
                                     <div class="alert-error">
-                                        <div class="line"></div>
-                                        <div><span class="material-icons">
-                                        report
-                                        </span>
-                                        </div>
-                                        <div class="line"></div>
+                                       <div class="line"></div>
+                                       <div><span class="material-icons">
+                                          report
+                                          </span>
+                                       </div>
+                                       <div class="line"></div>
                                     </div>
                                     <div class="alert-content">
-                                        Only penalties from the last 10 years can be considered for relief. For example, if a request for relief was submitted in 2024, penalties for tax years prior to 2014 would not be considered for relief.
+                                       Only penalties from the last 10 years can be considered for relief. For example, if a request for relief was submitted in 2024, penalties for tax years prior to 2014 would not be considered for relief.                                        
+                                       <br>For more information visit <a>Limitation period for requesting relief</a>.
                                     </div>
-                                </div>
-                            </div>
-                            <div class="subfield-wrapper hidden" id="penaltyPanel-blue">
-                                <div class="alert">
+                                 </div>
+                              </div>
+                              <div class="subfield-wrapper hidden" id="penalty-panel-blue">
+                                 <div class="alert">
                                     <div class="alert-info">
-                                        <div class="line"></div>
-                                        <div><span class="material-icons">
-                                        info
-                                        </span>
-                                        </div>
-                                        <div class="line"></div>
+                                       <div class="line"></div>
+                                       <div><span class="material-icons">
+                                          info
+                                          </span>
+                                       </div>
+                                       <div class="line"></div>
                                     </div>
                                     <div class="alert-content">
-                                        Only penalties from the last 10 years can be considered for relief. For example, if a request for relief was submitted in 2024, penalties for tax years prior to 2014 would not be considered for relief.
+                                       Only penalties from the last 10 years can be considered for relief. For example, if a request for relief was submitted in 2024, penalties for tax years prior to 2014 would not be considered for relief.
+                                       <br>For more information visit <a>Limitation period for requesting relief</a>.
                                     </div>
-                                </div>
-                            </div>
-                            </fieldset>
-                            <!-- IF USER SELECTS INTEREST -->
-                            <fieldset id="step1-interest-question" class="hidden">
-                            <legend class="required-label">In which year(s) did you accrue interest? <span onclick="toggleLB('interestYear');" class ="material-icons help"">help</span> </legend>
-                            Use the range slider to select the tax year(s) in which you accumulated interest.
-                            <div class="slider" id="slider-penalty">
-                                <div>
-                                    <div id="fill-left" style="width:70%;"></div>
-                                    <div id="fill-right" style="width:70%;"></div>
-                                    <div id="range"  style="left:90%;right:0%;"></div>
-                                    <span id="handle-left" class="thumb" style="left:90%;"></span>
-                                    <span id="handle-right" class="thumb" style="left:100%;"></span>
-                                    <div id="sign-left" class="sign" style="left:90%;">
-                                        <span id="value">2014</span>
-                                    </div>
-                                    <div id="sign-right" class="sign" style="left:100%;">
-                                        <span id="value">2024</span>
-                                    </div>
-                                </div>
-                                <input id="intminslider" type="range" tabindex="0" value="90" max="100" min="0" step="1" oninput="setSliderValue(this, 'interest')" onchange="displayIntAlert()" />
-                                <input id="intmaxslider" type="range" tabindex="0" value="100" max="100" min="0" step="1" oninput="setSliderValue(this, 'interest')" onchange="displayIntAlert()"/>
-                            </div>
-                            
-                            <div class="subfield-wrapper hidden" id="interestPanel-blue">
-                                <div class="alert">
+                                 </div>
+                              </div>
+                           </fieldset>
+                           <!-- IF USER SELECTS INTEREST -->
+                           <fieldset id="step1-interest-question" class="hidden" data-radio-group required>
+                              <legend class="required-label">When was the tax year or period that you accrued interest or interests?<span onclick="toggleLB('interestYearLightbox');" class ="material-icons help">help</span> </legend>
+                              <div class="radio-group">
+                                 <input type="radio" id="step1-interest-lessthan10" name="step1-question4" value="Within the last 10 years">
+                                 <label for="step1-interest-lessthan10">Within the last 10 years</label>
+                              </div>
+                              <div class="radio-group">
+                                 <input type="radio" id="step1-interest-over10" name="step1-question4" value="More than 10 years ago" data-target="interestPanel-blue">
+                                 <label for="step1-interest-over10">More than 10 years ago</label>
+                              </div>
+                              <div class="radio-group">
+                                 <input type="radio" id="step1-interest-both" name="step1-question4" value="Both within the last 10 years and more than 10 years ago" data-target="interestPanel-blue">
+                                 <label for="step1-interest-both">Both within the last 10 years and more than 10 years ago</label>
+                              </div>
+                              <div class="subfield-wrapper hidden" id="interestPanel-blue">
+                                 <div class="alert">
                                     <div class="alert-info">
-                                        <div class="line"></div>
-                                        <div><span class="material-icons">
-                                        info
-                                        </span>
-                                        </div>
-                                        <div class="line"></div>
+                                       <div class="line"></div>
+                                       <div><span class="material-icons">
+                                          info
+                                          </span>
+                                       </div>
+                                       <div class="line"></div>
                                     </div>
                                     <div class="alert-content">
-                                        You can request relief of interest for any year, but relief can only be granted for interest you accumulated within the last 10 years.<br><br>
-                                        For example, if a request for relief was submitted in 2024, and the interest began accumulating in 2010, relief may only be granted for the interest that accumulated between 2014 to 2024.
+                                       You can request relief of interest for any year, but relief can only be granted for interest you accumulated within the last 10 years.
+                                       <br>For example, if a request for relief was submitted in 2024, and the interest began accumulating in 2010, relief may only be granted for the interest that accumulated between 2014 to 2024.
+                                       <br>For more information visit <a>Limitation period for requesting relief</a>.
                                     </div>
-                                </div>
-                            </div>
-                            <div class="subfield-wrapper hidden" id="interestPanel-red">
-                                <div class="alert">
-                                    <div class="alert-error">
-                                        <div class="line"></div>
-                                        <div><span class="material-icons">
-                                        report
-                                        </span>
-                                        </div>
-                                        <div class="line"></div>
-                                    </div>
-                                    <div class="alert-content">
-                                        You can request relief of interest for any year, but relief can only be granted for interest you accumulated within the last 10 years.<br><br>
-                                        For example, if a request for relief was submitted in 2024, and the interest began accumulating in 2010, relief may only be granted for the interest that accumulated between 2014 to 2024.
-                                    </div>
-                                </div>
-                            </div>
-                            </fieldset>
-                            <!-- INTEREST LIGHTBOX -->
-                            <div class="lightbox-container" id="chargelightbox">
-                            <div class="lightbox">
-                                <div class="header">
-                                    <h3> <span class ="material-icons help2">help</span> What type of charge did you get?</h3>
-                                    <button class="tertiary" type="button" onclick="toggleLB('charge')">
+                                 </div>
+                              </div>
+                           </fieldset>
+                           <!-- PENALTY LIGHTBOX -->
+                           <div class="lightbox-container" id="penaltyYearLightbox">
+                              <div class="lightbox">
+                                 <div class="header">
+                                    <h3> <span class ="material-icons help2">help</span> When was the tax year or period that you accrued the penalty or penalties?</h3>
+                                    <button class="tertiary" type="button" onclick="toggleLB('penaltyYearLightbox')">
                                     <span class="material-icons">clear</span></button>
-                                </div>
-                                <div class="lightbox-content">
-                                    You can find penalties and interest charged on your Notice of Assessment (NOA).
-                                    <br><br>
-                                    The NOA is an evaluation of your tax return that includes the date that your tax return was processed, the details about how much you may owe, as well as possible refunds and credits.
-                                    <br><br>
-                                    The “Tax assessment summary” section on your NOA shows any penalty and interest that were calculated, as well as your refund or amount owing. If you have a balance owing from a previous assessment, it will also appear here.                         
-                                </div>
-                                <div class="buttons">
-                                    <button class="tertiary close" type="button" onclick="toggleLB('charge')">Close</button>
-                                </div>
-                            </div>
-                            </div>
-                            <!-- PENALTY LIGHTBOX -->
-                            <div class="lightbox-container" id="penaltyYearLightbox">
-                            <div class="lightbox">
-                                <div class="header">
-                                    <h3> <span class ="material-icons help2">help</span> In what year(s) did you receive the penalty?</h3>
-                                    <button class="tertiary" type="button" onclick="toggleLB('penaltyYear')">
-                                    <span class="material-icons">clear</span></button>
-                                </div>
-                                <div class="lightbox-content">
+                                 </div>
+                                 <div class="lightbox-content">
                                     A tax year is considered to be the year for which you filed your tax return.
                                     <br><br>
                                     When making your request, you will need to indicate the year for which the penalty was charged.
-                                </div>
-                                <div class="buttons">
-                                    <button class="tertiary close" type="button" onclick="toggleLB('penaltyYear')">Close</button>
-                                </div>
-                            </div>
-                            </div>
-                            <!-- INTEREST LIGHTBOX -->
-                            <div class="lightbox-container" id="interestYearLightbox">
-                            <div class="lightbox">
-                                <div class="header">
-                                    <h3> <span class ="material-icons help2">help</span> In which year(s) did you accrue interest?</h3>
-                                    <button class="tertiary" type="button" onclick="toggleLB('interestYear')">
+                                 </div>
+                                 <div class="buttons">
+                                    <button class="tertiary close" type="button" onclick="toggleLB('penaltyYearLightbox')">Close</button>
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- INTEREST LIGHTBOX -->
+                           <div class="lightbox-container" id="interestYearLightbox">
+                              <div class="lightbox">
+                                 <div class="header">
+                                    <h3> <span class ="material-icons help2">help</span> When was the tax year or period that you  accrued interest or interests?</h3>
+                                    <button class="tertiary" type="button" onclick="toggleLB('interestYearLightbox')">
                                     <span class="material-icons">clear</span></button>
-                                </div>
-                                <div class="lightbox-content">
+                                 </div>
+                                 <div class="lightbox-content">
                                     A tax year is considered to be the year for which you filed your tax return.
                                     <br><br>
                                     Interest accrues over time, therefore, you will need to indicate the tax year in which the interest started.
-                                </div>
-                                <div class="buttons">
-                                    <button class="tertiary close" type="button" onclick="toggleLB('interestYear')">Close</button>
-                                </div>
-                            </div>
-                            </div>
+                                 </div>
+                                 <div class="buttons">
+                                    <button class="tertiary close" type="button" onclick="toggleLB('interestYearLightbox')">Close</button>
+                                 </div>
+                              </div>
+                           </div>
                         </div>
                         <!-- MISDIRECTS -->
                         <div id="nonrelief-request-questions" class="radio-group hidden">
-                            <fieldset id="misdirect-fieldset" data-radio-group>
-                            <legend class="required-label"> Select the situation that best applies to you.</legend>
-                            <!-- I overcontributed to my TFSA and want to request the tax be waived or cancelled -->
-                            <div class="radio-group">
-                                <input type="radio" id="misdirect-overcontributed-tfsa" name="misdirects" data-target="panel-overcontributed-tfsa">
-                                <label for="misdirect-overcontributed-tfsa">I overcontributed to my TFSA and want to request the tax be waived or cancelled</label>
-                            </div>
-                            <!-- I overcontributed to my RRSP and want to request the tax be waived or cancelled -->
-                            <div class="radio-group">
-                                <input type="radio" id="misdirect-overcontributed-rrsp" name="misdirects" value="" data-target="panel-overcontributed-rrsp">
-                                <label for="misdirect-ammend-returns">I overcontributed to my RRSP and want to request the tax be waived or cancelled </label>
-                            </div>
-                            <!-- I made an error or omission on my tax return that I want to adjust -->
-                            <div class="radio-group">
-                                <input type="radio" id="misdrect-error" name="misdirects"
-                                data-target="panel-error">
-                                <label for="misdrect-administrative-charges">I made an error or omission on my tax return that I want to adjust</label>
-                            </div>
-                            <!-- I received administrative charges (for example, bank chargeback fees) that I want cancelled -->
-                            <div class="radio-group">
-                                <input type="radio" id="misdirect-administrative-charges" name="misdirects" data-target="panel-administrative-charges">
-                                <label for="misdirect-administrative-charges">I received administrative charges (for example, bank chargeback fees) that I want cancelled</label>
-                            </div>
-                            <!-- I want to qualify for a tax provision (such as eliminating or deferring the tax consequences of a transaction) -->
-                            <div class="radio-group">
-                                <input type="radio" id="misdirect-dispute-assessment" name="misdirects" data-target="panel-dispute-assessment">
-                                <label for="misdirect-dispute-assessment">I want to qualify for a tax provision (such as eliminating or deferring the tax consequences of a transaction)</label>
-                            </div>
-                            <!-- I do not agree with my assessment or reassessment -->
-                            <div class="radio-group">
-                                <input type="radio" id="misdirect-disagree" name="misdirects" data-target="panel-disagree">
-                                <label for="misdirect-other">I do not agree with my assessment or reassessment</label>
-                            </div>
-                            <!-- My situation is not listed -->
-                            <div class="radio-group">
-                                <input type="radio" id="misdirect-unlisted" name="misdirects"
-                                data-target="panel-unlisted">
-                                <label for="misdirect-unlisted">My situation is not listed</label>
-                            </div>
-                            <div class="subfield-wrapper misdirectPanels hidden" id="panel-administrative-charges">
-                                <div class="alert">
+                           <fieldset id="misdirect-fieldset" data-radio-group>
+                              <legend class="required-label"> Select the situation that best applies to you.</legend>
+                              <!-- I overcontributed to my TFSA and want to request the tax be waived or cancelled -->
+                              <div class="radio-group">
+                                 <input type="radio" id="misdirect-overcontributed-tfsa" name="misdirects" data-target="panel-overcontributed-tfsa">
+                                 <label for="misdirect-overcontributed-tfsa">I overcontributed to my TFSA and want to request the tax be waived or cancelled</label>
+                              </div>
+                              <!-- I overcontributed to my RRSP and want to request the tax be waived or cancelled -->
+                              <div class="radio-group">
+                                 <input type="radio" id="misdirect-overcontributed-rrsp" name="misdirects" value="" data-target="panel-overcontributed-rrsp">
+                                 <label for="misdirect-ammend-returns">I overcontributed to my RRSP and want to request the tax be waived or cancelled </label>
+                              </div>
+                              <!-- I made an error or omission on my tax return that I want to adjust -->
+                              <div class="radio-group">
+                                 <input type="radio" id="misdrect-error" name="misdirects"
+                                    data-target="panel-error">
+                                 <label for="misdrect-administrative-charges">I made an error or omission on my tax return that I want to adjust</label>
+                              </div>
+                              <!-- I received administrative charges (for example, bank chargeback fees) that I want cancelled -->
+                              <div class="radio-group">
+                                 <input type="radio" id="misdirect-administrative-charges" name="misdirects" data-target="panel-administrative-charges">
+                                 <label for="misdirect-administrative-charges">I received administrative charges (for example, bank chargeback fees) that I want cancelled</label>
+                              </div>
+                              <!-- I want to qualify for a tax provision (such as eliminating or deferring the tax consequences of a transaction) -->
+                              <div class="radio-group">
+                                 <input type="radio" id="misdirect-dispute-assessment" name="misdirects" data-target="panel-special-provision">
+                                 <label for="misdirect-dispute-assessment">I want to qualify for a tax provision (such as eliminating or deferring the tax consequences of a transaction)</label>
+                              </div>
+                              <!-- I do not agree with my assessment or reassessment -->
+                              <div class="radio-group">
+                                 <input type="radio" id="misdirect-disagree" name="misdirects" data-target="panel-disagree">
+                                 <label for="misdirect-other">I do not agree with my assessment or reassessment</label>
+                              </div>
+                              <!-- My situation is not listed -->
+                              <div class="radio-group">
+                                 <input type="radio" id="misdirect-unlisted" name="misdirects"
+                                    data-target="panel-unlisted">
+                                 <label for="misdirect-unlisted">My situation is not listed</label>
+                              </div>
+                              <div class="subfield-wrapper misdirectPanels hidden" id="panel-overcontributed-tfsa">
+                                 <div class="alert">
                                     <div class="alert-error">
-                                        <div class="line"></div>
-                                        <div><span class="material-icons">
-                                        report
-                                        </span>
-                                        </div>
-                                        <div class="line"></div>
+                                       <div class="line"></div>
+                                       <div><span class="material-icons">
+                                          report
+                                          </span>
+                                       </div>
+                                       <div class="line"></div>
                                     </div>
                                     <div class="alert-content">
-                                        Taxpayer relief does not apply to your situation. You seem to be looking to cancel administrative charges such as fees charged to you by your bank. To discuss your situation with a CRA agent, <a>Contact the Canada Revenue Agency (CRA)</a>.                                    
+                                       This tool cannot evaluate your situation. You may be looking to waive or cancel taxes on your excess TFSA contributions. To learn how to do so, go to <a>Waiver or cancellation of the TFSA taxes</a>.
                                     </div>
-                                </div>
-                            </div>
-                            <div class="subfield-wrapper misdirectPanels hidden" id="panel-dispute-assessment">
-                                <div class="alert">
+                                 </div>
+                              </div>
+                              <div class="subfield-wrapper misdirectPanels hidden" id="panel-overcontributed-rrsp">
+                                 <div class="alert">
                                     <div class="alert-error">
-                                        <div class="line"></div>
-                                        <div><span class="material-icons">
-                                        report
-                                        </span>
-                                        </div>
-                                        <div class="line"></div>
+                                       <div class="line"></div>
+                                       <div><span class="material-icons">
+                                          report
+                                          </span>
+                                       </div>
+                                       <div class="line"></div>
                                     </div>
                                     <div class="alert-content">
-                                        This tool cannot evaluate your situation. You may be looking to file a special election or an election, in order to qualify for certain tax provisions. To learn how to do so, go to <a>Filing a special election or return</a>. 
+                                       This tool cannot evaluate your situation. You may be looking to waive or cancel taxes on your excess RRSP contributions. To learn how to do so, go to <a>Excess contributions</a>.
                                     </div>
-                                </div>
-                            </div>
-                            <div class="subfield-wrapper misdirectPanels hidden" id="panel-disagree">
-                                <div class="alert">
+                                 </div>
+                              </div>
+                              <div class="subfield-wrapper misdirectPanels hidden" id="panel-error">
+                                 <div class="alert">
                                     <div class="alert-error">
-                                        <div class="line"></div>
-                                        <div><span class="material-icons">
-                                        report
-                                        </span>
-                                        </div>
-                                        <div class="line"></div>
+                                       <div class="line"></div>
+                                       <div><span class="material-icons">
+                                          report
+                                          </span>
+                                       </div>
+                                       <div class="line"></div>
                                     </div>
                                     <div class="alert-content">
-                                        This tool cannot evaluate your situation. To discuss your situation with a CRA agent, <a>Contact the Canada Revenue Agency (CRA)</a>.    
+                                       This tool cannot evaluate your situation. You may be looking to change your tax return. To learn how to do so for an individual tax account, go to <a>How to change your return</a>. To learn how to do this for a business account, go to <a>My Business Account</a>.
                                     </div>
-                                </div>
-                            </div>
-                            <div class="subfield-wrapper misdirectPanels hidden" id="panel-unlisted">
-                                <div class="alert">
+                                 </div>
+                              </div>
+                              <div class="subfield-wrapper misdirectPanels hidden" id="panel-administrative-charges">
+                                 <div class="alert">
                                     <div class="alert-error">
-                                        <div class="line"></div>
-                                        <div><span class="material-icons">
-                                        report
-                                        </span>
-                                        </div>
-                                        <div class="line"></div>
+                                       <div class="line"></div>
+                                       <div><span class="material-icons">
+                                          report
+                                          </span>
+                                       </div>
+                                       <div class="line"></div>
                                     </div>
                                     <div class="alert-content">
-                                        If another situation applies to you, or you have other questions about your taxes you can discuss your situation with a CRA agent, <a>Contact the Canada Revenue Agency (CRA)</a>.
+                                       Taxpayer relief does not apply to your situation. You seem to be looking to cancel administrative charges such as fees charged to you by your bank. To discuss your situation with a CRA agent, <a>Contact the Canada Revenue Agency (CRA)</a>.                                    
                                     </div>
-                                </div>
-                            </div>
-                            <div class="subfield-wrapper misdirectPanels hidden" id="panel-overcontributed-tfsa">
-                                <div class="alert">
+                                 </div>
+                              </div>
+                              <div class="subfield-wrapper misdirectPanels hidden" id="panel-special-provision">
+                                 <div class="alert">
                                     <div class="alert-error">
-                                        <div class="line"></div>
-                                        <div><span class="material-icons">
-                                        report
-                                        </span>
-                                        </div>
-                                        <div class="line"></div>
+                                       <div class="line"></div>
+                                       <div><span class="material-icons">
+                                          report
+                                          </span>
+                                       </div>
+                                       <div class="line"></div>
                                     </div>
                                     <div class="alert-content">
-                                        This tool cannot evaluate your situation. You may be looking to waive or cancel taxes on your excess TFSA contributions. To learn how to do so, go to <a>Waiver or cancellation of the TFSA taxes</a>.
+                                       This tool cannot evaluate your situation. You may be looking to file a special election or an election, in order to qualify for certain tax provisions. To learn how to do so, go to <a>Filing a special election or return</a>. 
                                     </div>
-                                </div>
-                            </div>
-                            <div class="subfield-wrapper misdirectPanels hidden" id="panel-overcontributed-rrsp">
-                                <div class="alert">
+                                 </div>
+                              </div>
+                              <div class="subfield-wrapper misdirectPanels hidden" id="panel-disagree">
+                                 <div class="alert">
                                     <div class="alert-error">
-                                        <div class="line"></div>
-                                        <div><span class="material-icons">
-                                        report
-                                        </span>
-                                        </div>
-                                        <div class="line"></div>
+                                       <div class="line"></div>
+                                       <div><span class="material-icons">
+                                          report
+                                          </span>
+                                       </div>
+                                       <div class="line"></div>
                                     </div>
                                     <div class="alert-content">
-                                        This tool cannot evaluate your situation. You may be looking to waive or cancel taxes on your excess RRSP contributions. To learn how to do so, go to <a>Excess contributions</a>.
+                                       This tool cannot evaluate your situation.  You seem to be looking to file an objection to dispute your notice of assessment or determination. To learn how to do so, go to <a>File an objection</a>.
                                     </div>
-                                </div>
-                            </div>
-                            <div class="subfield-wrapper misdirectPanels hidden" id="panel-error">
-                                <div class="alert">
+                                 </div>
+                              </div>
+                              <div class="subfield-wrapper misdirectPanels hidden" id="panel-unlisted">
+                                 <div class="alert">
                                     <div class="alert-error">
-                                        <div class="line"></div>
-                                        <div><span class="material-icons">
-                                        report
-                                        </span>
-                                        </div>
-                                        <div class="line"></div>
+                                       <div class="line"></div>
+                                       <div><span class="material-icons">
+                                          report
+                                          </span>
+                                       </div>
+                                       <div class="line"></div>
                                     </div>
                                     <div class="alert-content">
-                                        This tool cannot evaluate your situation. You may be looking to change your tax return. To learn how to do so for an individual tax account, go to <a>How to change your return</a>. To learn how to do this for a business account, go to <a>My Business Account</a>.
+                                       If another situation applies to you, or you have other questions about your taxes you can discuss your situation with a CRA agent, <a>Contact the Canada Revenue Agency (CRA)</a>.
                                     </div>
-                                </div>
-                            </div>
-                            </fieldset>
+                                 </div>
+                              </div>
+                           </fieldset>
                         </div>
-                        <!-- UNSURE ERROR PANEL -->
-                        <div id="unsurePanel" class="subfield-wrapper hidden">
-                            <div class="alert">
-                            <div class="alert-error">
-                                <div class="line"></div>
-                                <div><span class="material-icons">
-                                    report
-                                    </span>
-                                </div>
-                                <div class="line"></div>
-                            </div>
-                            <div class="alert-content">
-                                To find out if you were charged a penalty or interest, refer to your notice of assessment or statement of account using the applicable service at <a>CRA sign-in services</a>.
-                                <br><br>
-                                Once you have verified if you were charged a penalty or interest, return to this tool to continue.
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="tertiary" type="button" onclick="navigateStep('previous')">Back</button>
-                    <button id = "nextButton" class="primary next-btn" type="button" onclick="navigateStep('next');">Next</button>
-                    <button id ="misdirectButton" class="primary misdirect-btn hidden" type="button">Return to Canada.ca</button>
-                </form>
-                </div>
+                     </div>
+                     <button class="tertiary" type="button" onclick="navigateStep('previous')">Back</button>
+                     <button id = "nextButton" class="primary next-btn" type="button" onclick="navigateStep('next');">Next</button>
+                     <button id ="misdirectButton" class="primary misdirect-btn hidden" type="button">Return to Canada.ca</button>
+                  </form>
+               </div>
             </div>
-        </div>
-        <div class="step" id="step-2">
+         </div>
+         <div class="step active" id="step-2">
             <div class="step-header">
-                <div class="numbering">
-                    2<span class="material-icons completeNumbering" id="step2Icon">check</span>
-                </div>
-                <h4>Describe your situation</h4>
+               <div class="numbering">
+                  2<span class="material-icons completeNumbering" id="step2Icon">check</span>
+               </div>
+               <h4>Describe your situation</h4>
             </div>
             <div class="step-container">
-                <div class="step-content">
-                    <form id="step-2-form">
-                        <div class="full-width">
-                        <!-- WHY DO YOU WANT TO REQUEST RELIEF? -->
+               <div class="step-content">
+                  <form id="step-2-form">
+                     <div class="full-width">
                         <fieldset id="step2-question2-fieldset" required>
-                            <legend class="required-label">I am requesting relief of penalties and interest due to:</legend>
-                            Select all that apply.
-                            <div class="checkbox-group">
-                                <input type="checkbox" id="step2-question2-beyondcontrol" name="step2-question2" value="Circumstances beyond my control" data-target="reasonsFieldset" data-group="topLevelReasons" onclick="errorCheck()"> 
-                                <label for="step2-question2-beyondcontrol">Circumstances beyond my control</label>
-                            </div>
-                            <!-- 2. I got a penalty and/or interest because I did not pay or file on time but I am unable to pay due to my financial situation -->
-                            <div class="checkbox-group">
-                                <input type="checkbox" id="step2-question2-financialsituation" name="step2-question2" value="My financial situation" data-target="current-financial-situation" data-group="topLevelReasons" onclick="errorCheck()"> 
-                                <label for="step2-question2">My financial situation</label>
-                            </div>
-                            <!-- 3: I got a penalty and/or interest even though I paid and filed on time -->
-                            <div class="checkbox-group">
-                                <input type="checkbox" id="step2-question2-ontime" name="step2-question2" value="" data-target="ontime-panel" data-exclusive="true" data-group="topLevelReasons" onclick="errorCheck()">                            
-                                <label for="step2-question2">Being charged late filing penalties and/or interest even though I paid or filed on time</label>
-                            </div>
-                            <!-- 4: None of the above -->
-                            <div class="checkbox-group">
-                                <input type="checkbox" id="step2-question2-none" name="step2-question2" value="" data-target="none-panel" data-exclusive="true" data-group="topLevelReasons" onclick="errorCheck()">
-                                <label for="step2-question2">None of the above</label>
-                            </div>
-                            <!-- 3: ALERT -->
-                            <div class="subfield-wrapper hidden" id="ontime-panel">
-                                <div class="alert">
-                                    <div class="alert-error">
+                           <legend class="required-label">I am requesting relief of penalties and interest due to:</legend>
+                           Select all that apply.
+                           <div class="checkbox-group">
+                              <input type="checkbox" id="step2-question2-financialsituation" name="step2-question2" value="My financial situation" data-target="current-financial-situation" data-group="topLevelReasons" onclick="errorCheck()"> 
+                              <label for="step2-question2-financialsituation">My financial situation</label>
+                           </div>
+                           <div class="checkbox-group">
+                              <input type="checkbox" id="step2-question2-beyondcontrol" name="step2-question2" value="Circumstances beyond my control" data-target="circumstances-fieldset" data-group="topLevelReasons" onclick="errorCheck()"> 
+                              <label for="step2-question2-beyondcontrol">Circumstances beyond my control</label>
+                           </div>
+                           <div class="checkbox-group">
+                              <input type="checkbox" id="step2-question2-craactions" name="step2-question2" value="Actions of the CRA" data-target="cra-actions-fieldset" data-group="topLevelReasons" onclick="errorCheck()">                            
+                              <label for="step2-question2-craactions">Actions of the CRA</label>
+                           </div>
+                           <div class="checkbox-group">
+                              <input type="checkbox" id="step2-question2-other" name="step2-question2" value="Another reason" data-target="other-circumstances-fieldset" data-group="topLevelReasons" onclick="errorCheck()">
+                              <label for="step2-question2-other">Another reason</label>
+                           </div>
+                        </fieldset>
+                        <fieldset id="circumstances-fieldset" class ="hidden">
+                           <legend class="required-label">
+                              What were the circumstances that prevented you from meeting your tax obligations?
+                           </legend>
+                           <span>Select all that apply.<br></span>
+                           <!-- Seriously Ill or Injured Checkbox -->
+                           <div class="checkbox-group">
+                              <input type="checkbox" id="serious-illness-checkbox" name="seriousillness" value="Serious illness, an accident or mental/emotional distress">
+                              <label for="serious-illness-checkbox">Serious illness, an accident or mental/emotional distress</label>
+                           </div>
+                           <!-- Significant Person's Death Checkbox -->
+                           <div class="checkbox-group">
+                              <input type="checkbox" id="death-significant-checkbox" name="significantdeath" value="Death of a significant person in my life">
+                              <label for="death-significant-checkbox">Death of a significant person in my life</label>
+                           </div>
+                           <!-- Death Representative Checkbox -->
+                           <div class="checkbox-group">
+                              <input type="checkbox" id="death-representing-checkbox" name="deathrep" value="The death of an individual I am representing as an executor, accountant, etc.">
+                             
+                            <label for="death-representing-checkbox">Death of a person I am representing as an executor, accountant, etc.</label>
+                          
+                           </div>
+                           <!-- Severe Weather Checkbox -->
+                           <div class="checkbox-group">
+                              <input type="checkbox" id="natural-disaster-checkbox" name="severeweather" value="Severe weather event">
+                                 <label for="natural-disaster-checkbox">Severe weather event or natural disaster</label>
+                            
+                           </div>
+                           <!-- Fire or Flood Checkbox -->
+                           <div class="checkbox-group">
+                              <input type="checkbox" id="fire-flood-checkbox" name="fireflood" value="Fire or flood">
+                            
+                                 <label for="fire-flood-checkbox">Fire or flood at my home or business</label>
+                        
+                           </div>
+                           <!-- Strike or Protest Checkbox -->
+                           <div class="checkbox-group">
+                              <input type="checkbox" id="civil-disturbance-checkbox" name="strikeprotest" value="strike or protest">
+                         
+                                 <label for="civil-disturbance-checkbox">Strike or protest</label>
+                           </div>
+                           <div class="checkbox-group">
+                              <input type="checkbox" id="thirdparty-checkbox" name="step2-othercirc" value="Third-party error (someone handled my tax obligations for me)" data-target="thirdPartyPanel">
+                              <label for="thirdparty-checkbox">Third-party error (someone handled my tax obligations for me)</label>
+                           </div>
+                           <div class="checkbox-group">
+                              <input type="checkbox" id="bankerror-checkbox" name="step2-othercirc" value="Bank error" data-target="bankErrorPanel">
+                              <label for="bankerror-checkbox">Bank error</label>
+                           </div>
+                           <div class="subfield-wrapper otherCircPanels hidden" id="thirdPartyPanel">
+                              <div class="alert">
+                                 <div class="alert-info">
                                     <div class="line"></div>
                                     <div><span class="material-icons">
-                                        report
-                                        </span>
+                                       info
+                                       </span>
                                     </div>
                                     <div class="line"></div>
+                                 </div>
+                                 <div class="alert-content">
+                                    <h5>Third-party error - This situation may not qualify for relief under the Taxpayer Relief Program</h5>
+                                    You are responsible for any errors or delays caused by a third-party (for example, your accountant). You are expected to know what was filed and get proof that your return or payments were sent on time. However, there may be exceptional situations where relief can be granted.            
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="subfield-wrapper otherCircPanels hidden" id="bankErrorPanel">
+                              <div class="alert">
+                                 <div class="alert-info">
+                                    <div class="line"></div>
+                                    <div><span class="material-icons">
+                                       info
+                                       </span>
                                     </div>
-                                    <div class="alert-content">
+                                    <div class="line"></div>
+                                 </div>
+                                 <div class="alert-content">
+                                    <h5>Bank error - This situation may not qualify for relief under the Taxpayer Relief Program</h5>
+                                    A bank error may qualify for taxpayer relief if a payment is made on time at a financial institution, but a delay occurs in the transfer of funds to the CRA. These types of requests may be approved if the bank has admitted fault and can provide proof of the error.
+                                 </div>
+                              </div>
+                           </div>
+                        </fieldset>
+                        <fieldset id="cra-actions-fieldset" class="hidden">
+                           <legend class="required-label">What were the actions?</legend>
+                           Select all that apply.
+                           <div class="checkbox-group">
+                              <input type="checkbox" id="cra-delay-checkbox" name="step2-craactions" value="CRA delay">
+                              
+                                 <label for="cra-delay-checkbox">CRA delay</label>
+                              
+                           </div>
+                           <div class="checkbox-group">
+                              <input type="checkbox" id="cra-error-checkbox" name="step2-craactions" value="CRA error">
+                             
+                                 <label for="cra-error-checkbox">CRA error</label>
+                            
+                           </div>
+                           <div class="checkbox-group">
+                              <input type="checkbox" id="step2-question2-ontime" name="step2-craactions" value="CRA charged me penalties and/or interst even though I paid or filed on time" data-target="ontime-panel" onclick="errorCheck()">
+                          
+                                 <label for="step2-question2-ontime">CRA charged me penalties and/or interest even though I paid or filed on time</label>
+                           
+                           </div>
+                           <div class="subfield-wrapper hidden" id="ontime-panel">
+                              <div class="alert">
+                                 <div class="alert-error">
+                                    <div class="line"></div>
+                                    <div><span class="material-icons">
+                                       report
+                                       </span>
+                                    </div>
+                                    <div class="line"></div>
+                                 </div>
+                                 <div class="alert-content">
                                     Double check the <a>personal tax deadlines</a> or the <a>business tax deadlines</a>.
                                     <br><br>
                                     If after verifying the deadlines, you still believe you were charged incorrectly, do not apply for taxpayer relief. <a>Contact the Canada Revenue Agency (CRA)</a> to discuss your situation.
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- 4: ALERT -->
-                            <div class="subfield-wrapper hidden" id="none-panel">
-                                <div class="alert">
-                                    <div class="alert-error">
-                                    <div class="line"></div>
-                                    <div><span class="material-icons">
-                                        report
-                                        </span>
-                                    </div>
-                                    <div class="line"></div>
-                                    </div>
-                                    <div class="alert-content">
-                                    Taxpayer relief is only possible when events beyond your control prevented you from meeting your tax obligations or you are experiencing financial hardship. It may be helpful to consider <a>other options that may better fit your situation.</a> 
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
-                        <!-- Reasons for not meeting tax obligations -->
-                        <fieldset id="reasonsFieldset" class ="hidden">
-                            <legend class="required-label">
-                                What was the circumstance that prevented you from meeting your tax obligations?
-                            </legend>
-                            <span><strong>I was impacted by:</strong><br>Select all that apply.<br></span>
-                            <!-- Seriously Ill or Injured Checkbox -->
-                            <div class="checkbox-group">
-                                <input type="checkbox" id="serious-illness-checkbox" name="seriousillness" value="Serious illness or injury">
-                                <div class="label-group">
-                                    <label>Serious illness or injury</label>
-                                </div>
-                            </div>
-                            <!-- Mental Distress Checkbox -->
-                            <div class="checkbox-group">
-                                <input type="checkbox" id="mental-distress-checkbox" name="mentaldistress" value="Mental or emotional distress">
-                                <div class="label-group">
-                                    <label>Mental or emotional distress</label>
-                                </div>
-                            </div>
-                            <!-- Significant Person's Death Checkbox -->
-                            <div class="checkbox-group">
-                                <input type="checkbox" id="death-significant-checkbox" name="significantdeath" value="Significant death">
-                                <div class="label-group">
-                                    <label>The death of a significant person in my life</label>
-                                </div>
-                            </div>
-                            <!-- Death Representative Checkbox -->
-                            <div class="checkbox-group">
-                                <input type="checkbox" id="death-representing-checkbox" name="deathrep" value="The death of an individual I am representing as an executor, accountant, etc.">
-                                <div class="label-group">
-                                    <label>The death of an individual I am representing as an executor, accountant, etc.</label>
-                                </div>
-                            </div>
-                            <!-- CRA Delay Checkbox -->
-                            <div class="checkbox-group">
-                                <input type="checkbox" id="cra-delay-checkbox" name="cradelay" value="CRA delay">
-                                <div class="label-group">
-                                    <label>A CRA delay</label>
-                                </div>
-                            </div>
-                            <!-- CRA Error Checkbox -->
-                            <div class="checkbox-group">
-                                <input type="checkbox" id="cra-error-checkbox" name="craerror" value="CRA Error">
-                                <div class="label-group">
-                                    <label>An error made by the CRA</label>
-                                </div>
-                            </div>
-                            <!-- Severe Weather Checkbox -->
-                            <div class="checkbox-group">
-                                <input type="checkbox" id="natural-disaster-checkbox" name="severeweather" value="Severe weather event">
-                                <div class="label-group">
-                                    <label>A severe weather event or natural disaster</label>
-                                </div>
-                            </div>
-                            <!-- Fire or Flood Checkbox -->
-                            <div class="checkbox-group">
-                                <input type="checkbox" id="fire-flood-checkbox" name="fireflood" value="Fire or flood">
-                                <div class="label-group">
-                                    <label>A fire or flood at my home or business</label>
-                                </div>
-                            </div>
-                            <!-- Strike or Protest Checkbox -->
-                            <div class="checkbox-group">
-                                <input type="checkbox" id="civil-disturbance-checkbox" name="strikeprotest" value="strike or protest">
-                                <div class="label-group">
-                                    <label>A strike or protest</label>
-                                </div>
-                            </div>
-                            <!-- Extraordinary Circumstances Checkbox -->
-                            <div class="checkbox-group">
-                                <input type="checkbox" id="extraordinary-circumstances-checkbox" name="othercircum" value="Other circumstance" data-target="other-circumstances-fieldset">
-                                <div class="label-group">
-                                    <label>Extraordinary circumstances other than those described above</label>
-                                </div>
-                            </div>
+                                 </div>
+                              </div>
+                           </div>
                         </fieldset>
                         <fieldset id="other-circumstances-fieldset" class="hidden" required data-radio-group>
-                            <legend class="required-label"> Select the option that best describes your circumstances.</legend>
-                            Select all that apply.
-                            <div class="radio-group">
-                                <input type="radio" id="step2-othercirc-didnotknow" name="step2-othercirc" value="I did not know I had to file and/or pay" data-target="didNotKnowPanel">
-                                <label for="step2-othercirc-didnotknow">I did not know I had to file and/or pay</label>
-                            </div>
-                            <div class="radio-group">
-                                <input type="radio" id="step2-othercirc-thirdparty" name="step2-othercirc" value="Third-party error (someone handled my tax obligations for me)" data-target="thirdPartyPanel">
-                                <label for="step2-othercirc-thirdparty">Third-party error (someone handled my tax obligations for me)</label>
-                            </div>
-                            <div class="radio-group">
-                                <input type="radio" id="step2-othercirc-bankerror" name="step2-othercirc" value="Bank error" data-target="bankErrorPanel">
-                                <label for="step2-othercirc-bankerror">Bank error</label>
-                            </div>
-                            <div class="radio-group">
-                                <input type="radio" id="step2-othercirc-other" name="step2-othercirc" value="Another circumstance not listed above" data-target="anotherCircPanel">
-                                <label for="step2-othercirc-other">Another circumstance not listed above</label>
-                            </div>
-                            <div id="didNotKnowPanel" class="hidden">
-                                <div class="field-wrapper hidden" id="didntknow-red">
-                                    <div class="alert">
+                           <legend class="required-label"> Select the option that best describes your circumstances.</legend>
+                           Select all that apply.
+                           <div class="radio-group">
+                              <input type="radio" id="step2-othercirc-didnotknow" name="step2-othercirc" value="I did not know I had to file and/or pay" data-target="didNotKnowPanel"  onclick="errorCheck()">
+                              <label for="step2-othercirc-didnotknow">I did not know I had to file and/or pay</label>
+                           </div>
+                           <div class="radio-group">
+                              <input type="radio" id="step2-othercirc-other" name="step2-othercirc" value="Another circumstance not listed above" data-target="anotherCircPanel">
+                              <label for="step2-othercirc-other">Another circumstance not listed above</label>
+                           </div>
+                           <div id="didNotKnowPanel" class="hidden">
+                              <div class="field-wrapper hidden" id="didntknow-red">
+                                 <div class="alert">
                                     <div class="alert-error">
-                                        <div class="line"></div>
-                                        <div><span class="material-icons">
-                                            report
-                                            </span>
-                                        </div>
-                                        <div class="line"></div>
+                                       <div class="line"></div>
+                                       <div><span class="material-icons">
+                                          report
+                                          </span>
+                                       </div>
+                                       <div class="line"></div>
                                     </div>
                                     <div class="alert-content">
-                                        <h5>This situation does not generally qualify for relief under the Taxpayer Relief Program</h5>
-                                        Taxpayers are expected to have a general knowledge of their obligations and to meet these obligations without being asked. It is the responsibility of the  taxpayer to file complete and accurate returns and remit any amounts owing on time. 
-                                        <br><br>Under certain circumstances, you may be able to <a>arrange to pay your debt over time.</a>
+                                       <h5>This situation does not generally qualify for relief under the Taxpayer Relief Program</h5>
+                                       Taxpayers are expected to have a general knowledge of their obligations and to meet these obligations without being asked. It is the responsibility of the  taxpayer to file complete and accurate returns and remit any amounts owing on time. 
+                                       <br><br>Under certain circumstances, you may be able to <a>arrange to pay your debt over time.</a>
                                     </div>
-                                    </div>
-                                </div>
-                                <div class="field-wrapper hidden" id="didntknow-blue">
-                                    <div class="alert">
+                                 </div>
+                              </div>
+                              <div class="field-wrapper hidden" id="didntknow-blue">
+                                 <div class="alert">
                                     <div class="alert-info">
-                                        <div class="line"></div>
-                                        <div><span class="material-icons">
-                                            info
-                                            </span>
-                                        </div>
-                                        <div class="line"></div>
+                                       <div class="line"></div>
+                                       <div><span class="material-icons">
+                                          info
+                                          </span>
+                                       </div>
+                                       <div class="line"></div>
                                     </div>
                                     <div class="alert-content">
-                                        Taxpayers are expected to have a general knowledge of their obligations and to meet these obligations without being asked. It is the responsibility of the  taxpayer to file complete and accurate returns and remit any amounts owing on time. 
-                                        <br><br>Under certain circumstances, you may be able to <a>arrange to pay your debt over time.</a>
+                                       Taxpayers are expected to have a general knowledge of their obligations and to meet these obligations without being asked. It is the responsibility of the  taxpayer to file complete and accurate returns and remit any amounts owing on time. 
+                                       <br><br>Under certain circumstances, you may be able to <a>arrange to pay your debt over time.</a>
                                     </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="subfield-wrapper otherCircPanels hidden" id="thirdPartyPanel">
-                                <div class="alert">
-                                    <div class="alert-warning">
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="subfield-wrapper otherCircPanels hidden" id="anotherCircPanel">
+                              <div class="alert">
+                                 <div class="alert-info">
                                     <div class="line"></div>
                                     <div><span class="material-icons">
-                                        warning
-                                        </span>
+                                       info
+                                       </span>
                                     </div>
                                     <div class="line"></div>
-                                    </div>
-                                    <div class="alert-content">
-                                    <h5>This situation may not qualify for relief under the Taxpayer Relief Program</h5>
-                                    You are generally considered to be responsible for errors or delays made by your representative or third party. You should know what your representative files and get proof that your return or payment is sent on time.
-                                    <br><br>However, there may be exceptional situations where we may consider granting relief because of errors made or delays caused by your representative or a third party acting for you for tax related matters.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="subfield-wrapper otherCircPanels hidden" id="bankErrorPanel">
-                                <div class="alert">
-                                    <div class="alert-info">
-                                    <div class="line"></div>
-                                    <div><span class="material-icons">
-                                        info
-                                        </span>
-                                    </div>
-                                    <div class="line"></div>
-                                    </div>
-                                    <div class="alert-content">
-                                    A bank error may qualify for taxpayer relief if a payment is made on time at a financial institution, but a delay occurs in the transfer of funds to the CRA. These types of requests may be approved if the bank has admitted fault and can provide proof of the error.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="subfield-wrapper otherCircPanels hidden" id="anotherCircPanel">
-                                <div class="alert">
-                                    <div class="alert-info">
-                                    <div class="line"></div>
-                                    <div><span class="material-icons">
-                                        info
-                                        </span>
-                                    </div>
-                                    <div class="line"></div>
-                                    </div>
-                                    <div class="alert-content">
+                                 </div>
+                                 <div class="alert-content">
                                     You may qualify for relief based on circumstances that show you used reasonable care to meet your tax obligations. You will be asked to provide relevant documentation to support your request. 
-                                    </div>
-                                </div>
-                            </div>
+                                 </div>
+                              </div>
+                           </div>
                         </fieldset>
-                        <!-- Bonus Financial Questions -->
                         <fieldset id="current-financial-situation" class="hidden">
-                            <legend class="required-label">
-                                Select the option that best describes your financial situation.
-                            </legend>
-                            <!-- INDIVIDUAL -->
-                            <div class="checkbox-group">
-                                <input type="checkbox" id="financial-individual" name="financial-situation" value="Individual" data-group="finhardship-type" data-target="outstanding-tax-returns" onclick="checkBizType()">
-                                <label for="financial-individual">As an individual, paying what I owe to the CRA would make it difficult to afford basic necessities. For example, food, shelter, transportation, medical expenses.<br></label>
-                            </div>
-                            <!-- BUSINESS -->
-                            <div class="checkbox-group">
-                                <input type="checkbox" id="financial-business" name="financial-situation" value="Business" data-group="finhardship-type" data-target="outstanding-tax-returns" onclick="checkBizType()">
-                                <label for="financial-business">As a business owner, paying what I owe to the CRA would jeopardize the continuity of operations or my employees’ jobs</label>
-                            </div>
-                            <!-- OTHER -->
-                            <div class="checkbox-group">
-                                <input type="checkbox" id="financial-other" name="financial-situation" value="Neither" data-target="financial-other-panel" data-group="finhardship-type" data-exclusive="true">
-                                <label for="financial-other">I am experiencing a difficult financial situation but not to the extent described in the options above</label>
-                            </div>
-                            <!-- FINANCIAL OTHER PANEL -->
-                            <div id="financial-other-panel" class="hidden">
-                                <div class="subfield-wrapper hidden" id="financial-other-red">
-                                    <div class="alert">
+                           <legend class="required-label">
+                              Select the option that best describes your financial situation.
+                           </legend>
+                           <!-- INDIVIDUAL -->
+                           <div class="checkbox-group">
+                              <input type="checkbox" id="financial-individual" name="financial-situation" value="Individual" data-group="finhardship-type" data-target="outstanding-tax-returns" onclick="checkBizType()">
+                              <label for="financial-individual">As an individual, paying what I owe to the CRA would make it difficult to afford basic necessities. For example, food, shelter, transportation, medical expenses.<br></label>
+                           </div>
+                           <!-- BUSINESS -->
+                           <div class="checkbox-group">
+                              <input type="checkbox" id="financial-business" name="financial-situation" value="Business" data-group="finhardship-type" data-target="outstanding-tax-returns" onclick="checkBizType()">
+                              <label for="financial-business">As a business owner, paying what I owe to the CRA would jeopardize the continuity of operations or my employees’ jobs</label>
+                           </div>
+                           <!-- OTHER -->
+                           <div class="checkbox-group">
+                              <input type="checkbox" id="financial-other" name="financial-situation" value="Neither" data-target="financial-other-panel" data-group="finhardship-type" data-exclusive="true">
+                              <label for="financial-other">None of the above (I am experiencing a difficult financial situation but not to the extent described in the options above)</label>
+                           </div>
+                           <!-- FINANCIAL OTHER PANEL -->
+                           <div id="financial-other-panel" class="hidden">
+                              <div class="subfield-wrapper hidden" id="financial-other-red">
+                                 <div class="alert">
                                     <div class="alert-error">
-                                        <div class="line"></div>
-                                        <div><span class="material-icons">
-                                            report
-                                            </span>
-                                        </div>
-                                        <div class="line"></div>
+                                       <div class="line"></div>
+                                       <div><span class="material-icons">
+                                          report
+                                          </span>
+                                       </div>
+                                       <div class="line"></div>
                                     </div>
                                     <div class="alert-content">
-                                        Taxpayer relief is only possible when your financial situation is such that your basic needs or your business operations are at risk.It may be helpful to consider <a>other options that may better fit your situation</a>.
+                                       Taxpayer relief is only possible when your financial situation is such that your basic needs or your business operations are at risk. It may be helpful to consider <a>other options that may better fit your situation</a>.
                                     </div>
-                                    </div>
-                                </div>
-                                <div class="subfield-wrapper hidden" id="financial-other-blue">
-                                    <div class="alert">
+                                 </div>
+                              </div>
+                              <div class="subfield-wrapper hidden" id="financial-other-blue">
+                                 <div class="alert">
                                     <div class="alert-info">
-                                        <div class="line"></div>
-                                        <div><span class="material-icons">
-                                            info
-                                            </span>
-                                        </div>
-                                        <div class="line"></div>
+                                       <div class="line"></div>
+                                       <div><span class="material-icons">
+                                          info
+                                          </span>
+                                       </div>
+                                       <div class="line"></div>
                                     </div>
                                     <div class="alert-content">
-                                        Taxpayer relief is only possible when your financial situation is such that your basic needs or your business operations are at risk.
+                                       Taxpayer relief is only possible when your financial situation is such that your basic needs or your business operations are at risk.
                                     </div>
-                                    </div>
-                                </div>
-                            </div>
+                                 </div>
+                              </div>
+                           </div>
                         </fieldset>
-                        <!-- Outstanding Tax Question -->
                         <fieldset class="hidden" id="outstanding-tax-returns" data-radio-group>
-                            <legend class="required-label"> Do you have any outstanding tax returns that have yet to be filled with the CRA?</legend>
-                            <!-- YES -->
-                            <div class="radio-group" id="finQuest1Yes">
-                                <input type="radio" id="outstanding-tax-yes" name="outstandingTaxes" value="Yes" data-target="availableInvestmentsField, outstanding-tax-notification" onclick="checkBizType();" data-everchecked="false">
-                                <label for="step1-question1-yes">Yes</label>
-                            </div>
-                            <!-- NO -->
-                            <div class="radio-group" id="finQuest1No">
-                                <input type="radio" id="outstanding-tax-no" name="outstandingTaxes" value="No"
-                                    data-target="availableInvestmentsField" onclick="checkBizType()" data-everchecked="false">
-                                <label for="step1-question1-no">No</label>
-                            </div>
+                           <legend class="required-label"> Do you have any outstanding tax returns that have yet to be filled with the CRA?</legend>
+                           <!-- YES -->
+                           <div class="radio-group" id="finQuest1Yes">
+                              <input type="radio" id="outstanding-tax-yes" name="outstandingTaxes" value="Yes" data-target="availableInvestmentsField, abilityToBorrowField, outstanding-tax-notification" onclick="checkBizType();" data-everchecked="false">
+                              <label for="outstanding-tax-yes">Yes</label>
+                           </div>
+                           <!-- NO -->
+                           <div class="radio-group" id="finQuest1No">
+                              <input type="radio" id="outstanding-tax-no" name="outstandingTaxes" value="No"
+                                 data-target="availableInvestmentsField, abilityToBorrowField" onclick="checkBizType()" data-everchecked="false">
+                              <label for="outstanding-tax-no">No</label>
+                           </div>
                         </fieldset>
                         <!-- Outstanding Tax Alert -->
                         <div class="field-wrapper hidden" id="outstanding-tax-notification">
-                            <div class="alert">
-                                <div class="alert-info">
-                                    <div class="line "></div>
-                                    <div><span class="material-icons">
+                           <div class="alert">
+                              <div class="alert-info">
+                                 <div class="line "></div>
+                                 <div><span class="material-icons">
                                     info
                                     </span>
-                                    </div>
-                                    <div class="line"></div>
-                                </div>
-                                <div class="alert-content">
-                                    To review a taxpayer relief request for the reason of financial hardship, you should be up-to-date with the filing of your income tax returns so the officer reviewing your case can make an informed decision. Ensure that all your outstanding returns are filed as soon as possible.
-                                </div>
-                            </div>
+                                 </div>
+                                 <div class="line"></div>
+                              </div>
+                              <div class="alert-content">
+                                 To review a taxpayer relief request for the reason of financial hardship, you should be up-to-date with the filing of your income tax returns. It is recommended that all your outstanding returns are filed as soon as possible. For more information on how to file taxes, go to <a>File your taxes online: Certified tax software - Canada.</a>
+                              </div>
+                           </div>
                         </div>
                         <div id="availableInvestmentsField" class="hidden">
-                            <!-- Available Investment Question -->
-                            <fieldset id="available-investments" data-radio-group>
-                                <legend id="available-investments-ind" class="required-label hidden"> Do you have the ability to borrow or do you have any assets that you could dispose of to pay the CRA debt, in full? <a onclick="toggleLB('assetsForInd');">View considered assets for individuals</a><span class ="material-icons help" onclick="toggleLB('assetsForInd');">help</span>
-                                </legend>
-                                <legend id="available-investments-biz" class="required-label hidden"> Do you have the ability to borrow or do you have any assets that you could dispose of to pay the CRA debt, in full? <a onclick="toggleLB('assetsForBiz');">View considered assets for businesses</a><span onclick="toggleLB('assetsForBiz');"class ="material-icons help">help</span></legend>
-                                <legend id="available-investments-indbiz" class="required-label hidden"> Do you have the ability to borrow or do you have any assets that you could dispose of to pay the CRA debt, in full? <a onclick="toggleLB('assetsForIndBiz');">View considered assets for individuals and businesses</a><span onclick="toggleLB('assetsForIndBiz');"class ="material-icons help">help</span>
-                                </legend>
-                                For example: investments, retirement savings
-                                <!-- YES -->
-                                <div class="radio-group" id="finQuest2Yes">
-                                    <input type="radio" id="available-investments-yes" name="available-funds" value="Yes" data-target="available-investments-notification" onclick="errorCheck()">
-                                    <label for="step1-question1-yes">Yes, I have the ability</label>
-                                </div>
-                                <!-- NO -->
-                                <div class="radio-group" id="finQuest2No1">
-                                    <input type="radio" id="available-investments-no1" name="available-funds" value="No">
-                                    <label for="step1-question1-no2">No, I do not have the ability</label>
-                                </div>
-                            </fieldset>
-                            <div class="lightbox-container" id="assetsForIndLightbox">
-                                <div class="lightbox">
-                                    <div class="header">
+                           <!-- Available Investment Question -->
+                           <fieldset id="available-investments-fieldset" data-radio-group>
+                              <legend id="available-investments-ind" class="required-label hidden">Do you have any assets that you could dispose of to pay the debt to CRA in full?<span class ="material-icons help" onclick="toggleLB('assetsForIndLightbox');">help</span>
+                              </legend>
+                              <legend id="available-investments-biz" class="required-label hidden">Do you have any assets that you could dispose of to pay the debt to CRA in full?<span onclick="toggleLB('assetsForBizLightbox');"class ="material-icons help">help</span></legend>
+                              <legend id="available-investments-indbiz" class="required-label hidden">Do you have any assets that you could dispose of to pay the debt to CRA in full?<span onclick="toggleLB('assetsForIndBizLightbox');"class ="material-icons help">help</span>
+                              </legend>
+                              <div class="radio-group">
+                                 <input type="radio" id="available-investments-yes" name="availableinvestments" value="Yes" data-target="investments-panels" onclick="financialErrorCheck()">
+                                 <label for="available-investments-yes">Yes, I have assets</label>
+                              </div>
+                              <!-- NO -->
+                              <div class="radio-group">
+                                 <input type="radio" id="available-investments-no" name="availableinvestments" value="No" data-target="investments-panels" onclick="financialErrorCheck()">
+                                 <label for="available-investments-no">No, I do not have assets</label>
+                              </div>
+                           </fieldset>
+                           <div class="lightbox-container" id="assetsForIndLightbox">
+                              <div class="lightbox">
+                                 <div class="header">
                                     <h3> <span class ="material-icons help2">help</span>Considered assets for individuals</h3>
-                                    <button class="tertiary" type="button" onclick="toggleLB('assetsForInd')">
+                                    <button class="tertiary" type="button" onclick="toggleLB('assetsForIndLightbox')">
                                     <span class="material-icons">clear</span></button>
-                                    </div>
-                                    <div class="lightbox-content">
+                                 </div>
+                                 <div class="lightbox-content">
                                     <ul>
-                                        <li>Cash, saving account(s), TFSA, term deposits</li>
-                                        <li>Investment(for example, stocks, annuities, dividends, interest income);</li>
-                                        <li>Other income (for example, rental income, pension income);</li>
-                                        <li>Amounts used for discretionary expenses, including: recreation;</li>
-                                        <li>Registered retirement savings plan (RRSP) contributions, (RDSP);</li>
-                                        <li>Multiple motor vehicles in the household</li>
+                                       <li>Cash, saving account(s), TFSA, term deposits, home equity;</li>
+                                       <li>Investment(s)(for example, stocks, annuities, dividends, interest income);</li>
+                                       <li>Amounts used for non-essential expenses(for example, recreation, entertainment, dining out);</li>
+                                       <li>Registered retirement savings plan (RRSP) contributions;</li>
+                                       <li>Multiple motor vehicles in the household;</li>
+                                       <li>Other income (for example, rental income, pension income).</li>
                                     </ul>
-                                    </div>
-                                    <div class="buttons">
-                                    <button class="tertiary close" type="button" onclick="toggleLB('assetsForInd')">Close</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="lightbox-container" id="assetsForBizLightbox">
-                                <div class="lightbox">
-                                    <div class="header">
+                                 </div>
+                                 <div class="buttons">
+                                    <button class="tertiary close" type="button" onclick="toggleLB('assetsForIndLightbox')">Close</button>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="lightbox-container" id="assetsForBizLightbox">
+                              <div class="lightbox">
+                                 <div class="header">
                                     <h3> <span class ="material-icons help2">help</span>Considered assets for businesses</h3>
-                                    <button class="tertiary" type="button" onclick="toggleLB('assetsForBiz')">
+                                    <button class="tertiary" type="button" onclick="toggleLB('assetsForBizLightbox')">
                                     <span class="material-icons">clear</span></button>
-                                    </div>
-                                    <div class="lightbox-content">
+                                 </div>
+                                 <div class="lightbox-content">
                                     <ul>
-                                        <li>Cash, term deposits</li>
-                                        <li>Stocks, real estate, motor vehicles</li>
-                                        <li>Dividend paid to shareholder resulting in a net loss</li>
-                                        <li>Loans to other parties, investment in other entities</li>
-                                        <li>Inventory</li>
-                                        <li>Accounts receivable;</li>
-                                        <li>other receivable</li>
+                                       <li>Cash, term deposits;</li>
+                                       <li>Stocks, real estate, motor vehicles;</li>
+                                       <li>Dividend paid to shareholder;</li>
+                                       <li>Loans to other parties, investment in other entities;</li>
+                                       <li>Inventory;</li>
+                                       <li>Accounts receivable;</li>
+                                       <li>Other receivables.</li>
                                     </ul>
-                                    </div>
-                                    <div class="buttons">
-                                    <button class="tertiary close" type="button" onclick="toggleLB('assetsForBiz')">Close</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="lightbox-container" id="assetsForIndBizLightbox">
-                                <div class="lightbox">
-                                    <div class="header">
+                                 </div>
+                                 <div class="buttons">
+                                    <button class="tertiary close" type="button" onclick="toggleLB('assetsForBizLightbox')">Close</button>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="lightbox-container" id="assetsForIndBizLightbox">
+                              <div class="lightbox">
+                                 <div class="header">
                                     <h3> <span class ="material-icons help2">help</span>Considered assets for individuals and businesses</h3>
-                                    <button class="tertiary" type="button" onclick="toggleLB('assetsForIndBiz')">
+                                    <button class="tertiary" type="button" onclick="toggleLB('assetsForIndBizLightbox')">
                                     <span class="material-icons">clear</span></button>
-                                    </div>
-                                    <div class="lightbox-content">
+                                 </div>
+                                 <div class="lightbox-content">
                                     <strong>Individuals:</strong>
                                     <ul>
-                                        <li>Cash, term deposits</li>
-                                        <li>Stocks, real estate, motor vehicles</li>
-                                        <li>Dividend paid to shareholder resulting in a net loss</li>
-                                        <li>Loans to other parties, investment in other entities</li>
-                                        <li>Inventory</li>
-                                        <li>Accounts receivable;</li>
-                                        <li>other receivable</li>
+                                       <li>Cash, saving account(s), TFSA, term deposits, home equity;</li>
+                                       <li>Investment(s)(for example, stocks, annuities, dividends, interest income);</li>
+                                       <li>Amounts used for non-essential expenses(for example, recreation, entertainment, dining out);</li>
+                                       <li>Registered retirement savings plan (RRSP) contributions;</li>
+                                       <li>Multiple motor vehicles in the household;</li>
+                                       <li>Other income (for example, rental income, pension income).</li>
                                     </ul>
                                     <strong>Businesses:</strong>
                                     <ul>
-                                        <li>Cash, term deposits</li>
-                                        <li>Stocks, real estate, motor vehicles</li>
-                                        <li>Dividend paid to shareholder resulting in a net loss</li>
-                                        <li>Loans to other parties, investment in other entities</li>
-                                        <li>Inventory</li>
-                                        <li>Accounts receivable;</li>
-                                        <li>other receivable</li>
+                                       <li>Cash, term deposits;</li>
+                                       <li>Stocks, real estate, motor vehicles;</li>
+                                       <li>Dividend paid to shareholder;</li>
+                                       <li>Loans to other parties, investment in other entities;</li>
+                                       <li>Inventory;</li>
+                                       <li>Accounts receivable;</li>
+                                       <li>Other receivables.</li>
                                     </ul>
-                                    </div>
-                                    <div class="buttons">
-                                    <button class="tertiary close" type="button" onclick="toggleLB('assetsForIndBiz')">Close</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Available Investment Alert -->
-                            <div id="available-investments-notification" class="hidden">
-                                <div class="field-wrapper hidden" id="available-investments-red">
-                                    <div class="alert">
-                                    <div class="alert-error">
-                                        <div class="line"></div>
-                                        <div><span class="material-icons">
-                                            report
-                                            </span>
-                                        </div>
-                                        <div class="line"></div>
-                                    </div>
-                                    <div class="alert-content">
-                                        In order to qualify for taxpayer relief solely based on your financial situation, you must demonstrate a lack of funds available to pay. You may also need to demonstrate an inability to borrow funds.                                    
-                                    </div>
-                                    </div>
-                                </div>
-                                <div class="field-wrapper hidden" id="available-investments-blue">
-                                    <div class="alert">
-                                    <div class="alert-info">
-                                        <div class="line"></div>
-                                        <div><span class="material-icons">
-                                            info
-                                            </span>
-                                        </div>
-                                        <div class="line"></div>
-                                    </div>
-                                    <div class="alert-content">
-                                        In order to qualify for taxpayer relief based on your financial situation, you must demonstrate a lack of funds available to pay. You may also need to demonstrate an inability to borrow funds.                           
-                                    </div>
-                                    </div>
-                                </div>
-                            </div>
+                                 </div>
+                                 <div class="buttons">
+                                    <button class="tertiary close" type="button" onclick="toggleLB('assetsForIndBizLightbox')">Close</button>
+                                 </div>
+                              </div>
+                           </div>
                         </div>
+                        <div id="abilityToBorrowField" class="hidden">
+                           <!-- Available Investment Question -->
+                           <fieldset id="abilitytoborrow-fieldset" data-radio-group>
+                              <legend id="abilitytoborrow" class="required-label">Do you have the ability to borrow to pay the debt to CRA in full?<span class ="material-icons help" onclick="toggleLB('abilityToBorrowLightbox');">help</span>
+                              </legend>
+                              <div class="radio-group">
+                                 <input type="radio" id="abilitytoborrow-yes" name="abilitytoborrow" value="Yes" data-target="investments-panels" onclick="financialErrorCheck()">
+                                 <label for="abilitytoborrow-yes">Yes, I have the ability</label>
+                              </div>
+                              <!-- NO -->
+                              <div class="radio-group">
+                                 <input type="radio" id="abilitytoborrow-no" name="abilitytoborrow" value="No" data-target="investments-panels" onclick="financialErrorCheck()">
+                                 <label for="abilitytoborrow-no">No, I do not have the ability</label>
+                              </div>
+                              <div class="radio-group">
+                                 <input type="radio" id="abilitytoborrow-unsure" name="abilitytoborrow" value="Unsure" data-target="investments-panels" onclick="financialErrorCheck()">
+                                 <label for="abilitytoborrow-unsure">Unsure</label>
+                              </div>
+                           </fieldset>
+                           <div class="lightbox-container" id="abilityToBorrowLightbox">
+                              <div class="lightbox">
+                                 <div class="header">
+                                    <h3> <span class ="material-icons help2">help</span>Ability to borrow</h3>
+                                    <button class="tertiary" type="button" onclick="toggleLB('abilityToBorrowLightbox')">
+                                    <span class="material-icons">clear</span></button>
+                                 </div>
+                                 <div class="lightbox-content">
+                                    The ability to borrow means you could borrow the required funds to pay the debt to CRA from banks, lenders, or personal sources such as family or friends.
+                                 </div>
+                                 <div class="buttons">
+                                    <button class="tertiary close" type="button" onclick="toggleLB('abilityToBorrowLightbox')">Close</button>
+                                 </div>
+                              </div>
+                           </div>
                         </div>
-                        <button class="tertiary" type="button" onclick="navigateStep('previous')">Back</button>
-                        <button class="primary next-btn" type="button" onclick="navigateStep('next'); documentsCheck();">Next</button>
-                        <button class="primary misdirect-btn hidden" type="button">Return to Canada.ca</button>
-                    </form>
-                </div>
+                        <div id="investments-panels">
+                           <div class="field-wrapper hidden" id="available-investments-panel-blue">
+                              <div class="alert">
+                                 <div class="alert-info">
+                                    <div class="line"></div>
+                                    <div><span class="material-icons">
+                                       info
+                                       </span>
+                                    </div>
+                                    <div class="line"></div>
+                                 </div>
+                                 <div class="alert-content">
+                                    If you apply for taxpayer relief due to financial hardship, the CRA will consider your ability to dispose of assets and borrow funds to pay the debt. However, applications under financial hardship are reviewed on a case-by-case basis that considers your whole financial situation.                                    
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="field-wrapper hidden" id="available-investments-panel-red">
+                              <div class="alert">
+                                 <div class="alert-error">
+                                    <div class="line"></div>
+                                    <div><span class="material-icons">
+                                       error
+                                       </span>
+                                    </div>
+                                    <div class="line"></div>
+                                 </div>
+                                 <div class="alert-content">
+                                    If you apply for taxpayer relief due to financial hardship, the CRA will consider your ability to dispose of assets and borrow funds to pay the debt. However, applications under financial hardship are reviewed on a case-by-case basis that considers your whole financial situation.                                    
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <button class="tertiary" type="button" onclick="navigateStep('previous')">Back</button>
+                     <button class="primary next-btn" type="button" onclick="navigateStep('next'); documentsCheck();">Next</button>
+                     <button class="primary misdirect-btn hidden" type="button">Return to Canada.ca</button>
+                  </form>
+               </div>
             </div>
-        </div>
-        
-        <div class="step" id="step-3">
+         </div>
+         <div class="step" id="step-3">
             <div class="step-header">
-                <div class="numbering">
-                3<span class="material-icons completeNumbering" id="step3Icon">check</span>
-                </div>
-                <h4>Learn about your supporting documents</h4>
+               <div class="numbering">
+                  3<span class="material-icons completeNumbering" id="step3Icon">check</span>
+               </div>
+               <h4>Learn about supporting documents</h4>
             </div>
             <div class="step-container">
-                <div class="step-content">
-                <form id="step-3-form">
-                    The table below indicates the reason you will need to select when completing your application form. You will also find documents we recommend you provide to support your request for relief. Some additional documents may also be requested.
-                    <br><br>
-                    <table id="sumandreview" class="sar-table" cellpadding="20" cellspacing="0" cellspacing-horizontal="40px">
-                        <tr>
-                            <th>Reason you selected:</th>
-                            <th>Reason to select on the application form:</th>
-                            <th>Recommended supporting documents:</th>
-                        </tr>
-                        <tr id="financialIndividual">
-                            <td>
-                            As an individual, paying what I owe to the CRA would make it difficult to afford basic necessities. For example, food, shelter, transportation, medical expenses.
-                            </td>
-                            <td>Financial hardship / individual</td>
-                            <td>
-                            <ul>
-                                <li>Form RC376, Taxpayer Relief Request Statement of Income and Expenses and Assets and Liabilities for Individuals</li>
-                                <li>Bank and credit card statements for the last 3 months</li>
-                                <li>Current mortgage statements or rental agreements</li>
-                                <li>Loans and monthly bills</li>
-                            </ul>
-                            </td>
-                        </tr>
-                        <tr id = "financialBusiness">
-                            <td>
-                            As a business owner, paying what I owe to the CRA would jeopardize the continuity of operations or my employees’ jobs
-                            </td>
-                            <td>Financial hardship / business</td>
-                            <td>
-                            <ul>
-                                <li>Form T2125, Statement of Business or Professional Activities (for self-employed individuals only)</li>
-                                <li>Interim financial statements</li>
-                            </ul>
-                            </td>
-                        </tr>
-                        <tr id = "nd1">
-                            <td>
-                            A severe weather event or natural disaster
-                            </td>
-                            <td>Natural or human-made disaster</td>
-                            <td>
-                            <ul>
-                                <li>Insurance report</li>
-                                <li>News article</li>
-                                <li>Police report</li>
-                            </ul>
-                            </td>
-                        </tr>
-                        <tr id = "nd2">
-                            <td>
-                            A fire or flood at my home or business
-                            </td>
-                            <td>Natural or human-made disaster</td>
-                            <td>
-                            <ul>
-                                <li>Fire report</li>
-                                <li>Insurance report</li>
-                                <li>News article</li>
-                                <li>Police report</li>
-                            </ul>
-                            </td>
-                        </tr>
-                        <tr id = "si1">
-                            <td>Serious illness or injury</td>
-                            <td>Death, accident, serious illness, or emotional/mental distress</td>
-                            <td>
-                            Doctor's certificate or letter with treament length, any hospital dates, and how the medical condition impacted you.
-                            </td>
-                        </tr>
-                        <tr id = "si2">
-                            <td>
-                            Mental or emotional distress
-                            </td>
-                            <td>Death, accident, serious illness, or emotional/mental distress</td>
-                            <td>
-                            Doctor's certificate or letter with treament length, any hospital dates, and how the medical condition impacted you.
-                            </td>
-                        </tr>
-                        <tr id = "si3">
-                            <td>
-                            The death of a significant person in my life
-                            </td>
-                            <td>Death, accident, serious illness, or emotional/mental distress</td>
-                            <td>
-                            Death certificate or obituary
-                            </td>
-                        </tr>
-                        <tr id = "si4">
-                            <td>
-                            The death of an individual I am representing as an executor, accountant, etc.
-                            </td>
-                            <td>Death, accident, serious illness, or emotional/mental distress</td>
-                            <td>
-                            <ul>
-                                <li>Death certificate or obituary</li>
-                            </ul>
-                            </td>
-                        </tr>
-                        <tr id = "civ1">
-                            <td>
-                            A strike or protest
-                            </td>
-                            <td>Civil disturbance or disruption in services</td>
-                            <td>Supporting documents are usually not required if the event is public knowledge in Canada. If the event occured outside of Canada, it may be helpful to provide supporting documentation (for example, a news article).</td>
-                        </tr>
-                        <tr id = "cd1">
-                            <td>
-                            A CRA delay
-                            </td>
-                            <td>CRA delay</td>
-                            <td>Documents or screenshots that gives proof of delay</td>
-                        </tr>
-                        <tr id = "ce1">
-                            <td>
-                            An error made by the CRA
-                            </td>
-                            <td>CRA error</td>
-                            <td>Document or screenshot that gives proof of the error</td>
-                        </tr>
-                        <tr id = "oc1">
-                            <td>
-                            Extraordinary circumstances other than those described above
-                            </td>
-                            <td>Other circumstances</td>
-                            <td>Document or screenshot that gives proof of the circumstances.</td>
-                        </tr>
-                    </table>
-                    <br>
-                    <br>
-                    <fieldset id="step3-supdocs" data-radio-group="">
+               <div class="step-content">
+                  <form id="step-3-form">
+                     <div class="panel" id="financialIndividual">
+                        Your responses indicate that your situation may belong under the <strong>Financial hardship - individual</strong> category.<br>
+                        We recommend including the following supporting documents if you apply:
+                        <ul>
+                           <li><a>Form RC376, Taxpayer Relief Request Statement of Income and Expenses and Assets and Liabilities for Individuals</a><strong>(strongly recommended)</strong></li>
+                           <li>Bank and credit card statements for the last 3 months</li>
+                           <li>Current mortgage statements or rental agreements</li>
+                           <li>Loans and monthly bills</li>
+                        </ul>
+                     </div>
+                     <div class="panel" id="financialBusiness">
+                        Your responses indicate that your situation may belong under the <strong>Financial hardship - business</strong> category.<br>
+                        We recommend including the following supporting documents if you apply:
+                        <ul>
+                           <li><a>Form T2125, Statement of Business or Professional Activities</a> (for self-employed individuals only)</li>
+                           <li>Interim financial statements</li>
+                        </ul>
+                     </div>
+                     <div class="panel" id="nd1">
+                        Your responses indicate that your situation may belong under the <strong>Natural or human-made disaster</strong> category.<br>
+                        We recommend including the following supporting documents if you apply:
+                        <ul>
+                           <li>Fire report</li>
+                           <li>Insurance report</li>
+                           <li>News article</li>
+                           <li>Police report</li>
+                        </ul>
+                     </div>
+                     <div class="panel" id="nd2">
+                        <h6>Fire / flood</h6>
+                        Your responses indicate that your situation may belong under the <strong>Natural or human-made disaster</strong> category.<br>
+                        We recommend including the following supporting documents if you apply:
+                        <ul>
+                           <li>A news article</li>
+                           <li>Fire report</li>
+                           <li>Insurance report</li>
+                           <li>Police report</li>
+                        </ul>
+                     </div>
+                     <div class="panel" id="si1">
+                        Your responses indicate that your situation may belong under the <strong>Death, accident, serious illness, emotional or mental distress</strong> category.<br>
+                        We recommend including the following supporting documents if you apply:
+                        <ul>
+                           <li>Doctor's certificate</li>
+                           <li>Letter with treatment length</li>
+                           <li>Any hospital dates</li>
+                           <li>How the medical condition impacted you</li>
+                        </ul>
+                     </div>
+                     <div class="panel" id="si2">
+                        <h6>Death of a significant person in my life</h6>
+                        Your responses indicate that your situation may belong under the <strong>Death, accident, serious illness, emotional or mental distress</strong> category.<br>
+                        We recommend including the following supporting documents if you apply:
+                        <ul>
+                           <li>Death certificate</li>
+                           <li>Obituary</li>
+                        </ul>
+                     </div>
+                     <div class="panel" id="si3">
+                        <h6>Death of a person I represent</h6>
+                        Your responses indicate that your situation may belong under the <strong>Death, accident, serious illness, emotional or mental distress</strong> category.<br>
+                        We recommend including the following supporting documents if you apply:
+                        <ul>
+                           <li>Death certificate</li>
+                           <li>Obituary</li>
+                        </ul>
+                     </div>
+                     <div class="panel" id="civ1">
+                        <h6>Strike / protest</h6>
+                        Your responses indicate that your situation may belong under the <strong>Civil disturbance or disruption in services</strong> category. Supporting documents are usually not required if the event is public knowledge in Canada.<br><br>
+                        If the event occurred outside Canada, we recommend including the following supporting documents if you apply:
+                        <ul>
+                           <li>A news article</li>
+                        </ul>
+                     </div>
+                     <div class="panel" id="cd1">
+                        Your responses indicate that your situation may belong under the <strong>CRA delay</strong> category. <br>We recommend including the following supporting documents if you apply:
+                        <ul>
+                           <li>Documents that prove delay</li>
+                           <li>Screenshot of any dates or emails</li>
+                        </ul>
+                     </div>
+                     <div class="panel" id="ce1">
+                        Your responses indicate that your situation may belong under the <strong>CRA error</strong> category. <br>We recommend including the following supporting documents if you apply:
+                        <ul>
+                           <li>Documents that prove error</li>
+                           <li>Screenshot of any dates or emails</li>
+                        </ul>
+                     </div>
+                     <div class="panel" id="oc1">
+                        <h6>Bank Error</h6>
+                        Your responses indicate that your situation may belong under the <strong>Other circumstances</strong> category. <br>We recommend including the following supporting documents if you apply:
+                        <ul>
+                           <li>Documents provided by the bank proving their error</li>
+                        </ul>
+                     </div>
+                     <div class="panel" id="oc2">
+                        <h6>Third Party Error</h6>
+                        Your responses indicate that your situation may belong under the <strong>Other circumstances</strong> category. <br>We recommend including the following supporting documents if you apply:
+                        <ul>
+                           <li>Document or screenshot that gives proof of the circumstances.</li>
+                           <li>Screenshot of any dates or emails</li>
+                        </ul>
+                     </div>
+                     <div class="panel" id="oc3">
+                        Your responses indicate that your situation may belong under the <strong>Other circumstances</strong> category. <br>We recommend including the following supporting documents if you apply:
+                        <ul>
+                           <li>Document or screenshot that gives proof of the circumstances</li>
+                        </ul>
+                     </div>
+                     <br>
+                     <fieldset id="step3-supdocs" data-radio-group>
                         <legend class="required-label"> Can you provide any of the recommended documents above?</legend>
                         <div class="radio-group">
-                            <input type="radio" id="step3-yes" name="step3-question" value="Yes">
-                            <label for="step3-question">Yes</label>
+                           <input type="radio" id="step3-yes" name="step3-question" value="Yes">
+                           <label for="step3-yes">Yes</label>
                         </div>
-                        
                         <div class="radio-group">
-                            <input type="radio" id="step3-no2" name="step3-question" value="Yes" data-target="supdocPanel1">
-                            <label for="step3-question">No, but I can provide something else</label>
+                           <input type="radio" id="step3-no1" name="step3-question" value="Yes" data-target="supdocPanel1">
+                           <label for="step3-no2">No, but I can provide something else</label>
                         </div>
-                        
                         <div class="radio-group">
-                            <input type="radio" id="step3-no" name="step3-question" value="No" data-target="supdocPanel2">
-                            <label for="step3-question">No, I don't have any documents available.</label>
+                           <input type="radio" id="step3-no2" name="step3-question" value="No" data-target="supdocPanel2">
+                           <label for="step3-no2">No, I don't have any documents available.</label>
                         </div>
-
                         <div class="subfield-wrapper hidden" id="supdocPanel1">
-                            <div class="alert">
-                            <div class="alert-info">
-                                <div class="line"></div>
-                                <div><span class="material-icons">
+                           <div class="alert">
+                              <div class="alert-info">
+                                 <div class="line"></div>
+                                 <div><span class="material-icons">
                                     info
                                     </span>
-                                </div>
-                                <div class="line"></div>
-                            </div>
-                            <div class="alert-content">
-                                Supporting documentation other than what was recommended above is acceptable as long as it clearly supports your reason.
-                            </div>
-                            </div>
+                                 </div>
+                                 <div class="line"></div>
+                              </div>
+                              <div class="alert-content">
+                                 Supporting documentation other than what was recommended above is acceptable as long as it clearly supports your reason.
+                              </div>
+                           </div>
                         </div>
-                        
                         <div id = "supdocPanel2" class="hidden">
-                            <div class="subfield-wrapper" id="supdocPanel2-blue">
-                            <div class="alert">
-                                <div class="alert-info">
+                           <div class="subfield-wrapper" id="supdocPanel2-blue">
+                              <div class="alert">
+                                 <div class="alert-info">
                                     <div class="line"></div>
                                     <div><span class="material-icons">
-                                        info
-                                        </span>
+                                       info
+                                       </span>
                                     </div>
                                     <div class="line"></div>
-                                </div>
-                                <div class="alert-content">
+                                 </div>
+                                 <div class="alert-content">
                                     To ensure your application is processed as quickly and efficiently as possible, it is important to include supporting documentation when submitting your request                                
-                                </div>
-                            </div>
-                            </div>
-                            <div class="subfield-wrapper hidden" id="supdocPanel2-red">
-                            <div class="alert">
-                                <div class="alert-error">
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="subfield-wrapper hidden" id="supdocPanel2-red">
+                              <div class="alert">
+                                 <div class="alert-error">
                                     <div class="line"></div>
                                     <div><span class="material-icons">
-                                        report
-                                        </span>
+                                       report
+                                       </span>
                                     </div>
                                     <div class="line"></div>
-                                </div>
-                                <div class="alert-content">
+                                 </div>
+                                 <div class="alert-content">
                                     Supporting documentation for a request under financial hardship is required to demonstrate your inability to pay.
-                                </div>
-                            </div>
-                            </div>
+                                 </div>
+                              </div>
+                           </div>
                         </div>
-                       
-                    </fieldset>
-                    <br>
-                    <button class="tertiary" type="button" onclick="navigateStep('previous')">Back</button>
-                    <button id ="nextButton3" class="primary next-btn" type="button" onclick="navigateStep('next');">Next</button>
-                    <button id ="misdirectButton3" class="primary misdirect-btn hidden" type="button">Return to Canada.ca</button>
-                </form>
-                </div>
+                     </fieldset>
+                     <br>
+                     <button class="tertiary" type="button" onclick="navigateStep('previous')">Back</button>
+                     <button id ="nextButton3" class="primary next-btn" type="button" onclick="navigateStep('next');">Next</button>
+                     <button id ="misdirectButton3" class="primary misdirect-btn hidden" type="button">Return to Canada.ca</button>
+                  </form>
+               </div>
             </div>
-        </div>
-        <div class="step" id="step-4">
+         </div>
+         <div class="step" id="step-4">
             <div class="step-header">
-                <div class="numbering">4<span class="material-icons completeNumbering" id="step4Icon">check</span></div>
-                <h4>Your self-evaluation</h4>
+               <div class="numbering">4<span class="material-icons completeNumbering" id="step4Icon">check</span></div>
+               <h4>Your summary and next steps</h4>
             </div>
             <div class="step-container">
-                <div class="step-content">
-                <!-- SUCCESFUL QUALITIFACTION ALERT -->
-                <div class="field-wrapper" id="succesful-qualification">
-                    <div class="alert">
+               <div class="step-content">
+                  <!-- SUCCESFUL QUALITIFACTION ALERT -->
+                  <div class="field-wrapper" id="succesful-qualification">
+                     <div class="alert">
                         <div class="alert-success">
-                            <div class="line "></div>
-                            <div><span class="material-icons">
-                            check_circle
-                            </span>
-                            </div>
-                            <div class="line"></div>
+                           <div class="line "></div>
+                           <div><span class="material-icons">
+                              check_circle
+                              </span>
+                           </div>
+                           <div class="line"></div>
                         </div>
                         <div class="alert-content">
-                            <h4>You may qualify for taxpayer relief based on the information you provided.</h4>
+                           <h4>You may qualify for taxpayer relief based on the information you provided.</h4>
+                           <br>
+                           <strong>Note:</strong> remember to save and print your summary before exiting this page.
                         </div>
-                    </div>
-                </div>
-                <!-- WHAT DO YOU WANT TO DO NEXT -->
-                <div class="field-wrapper" id="warning-qualification">
-                    <h5>Ready to apply?</h5>
-                    <fieldset id="step3-applying"   required>
+                     </div>
+                  </div>
+                  <strong>View my summary:</strong>&nbsp;&nbsp;&nbsp;&nbsp;<button class="primary" type="button" onclick="window.open('summary.html')" target="_blank">Save / print summary</button>
+                  <!-- WHAT DO YOU WANT TO DO NEXT -->
+                  <div class="field-wrapper" id="warning-qualification">
+                     <h5>Ready to apply?</h5>
+                     <fieldset id="step3-applying"   required>
                         <b>I am applying as a:</b>
                         <div class="radio-group">
-                            <input class="specialRadio" type="radio" id="step3-individual" name="step3-applying" value="" 
-                            onclick="document.getElementById('myAccount').innerText = 'Sign in to My Account'
-                            document.getElementById('myBlank').innerHTML = 'Send it by using the Submit documents service in <a>My Account</a> or by mail';
-                            document.getElementById('portal').innerHTML = 'My Account for Individuals';
-                            document.getElementById('finalTable').classList.remove('hidden');">
-                            <label class="specialRadioLabel" for="step3-individual">Individual</label>
+                           <input class="specialRadio" type="radio" id="step3-individual" name="step3-applying" value="" 
+                              onclick="document.getElementById('myAccount').innerText = 'Sign in to My Account'; 
+                              document.getElementById('finalTable').classList.remove('hidden');">
+                           <label class="specialRadioLabel" for="step3-individual">Individual</label>
                         </div>
                         <div class="radio-group">
-                            <input class="specialRadio" type="radio" id="step3-business" name="step3-applying" value="" 
-                            onclick="document.getElementById('myAccount').innerText = 'Sign in to My Business Account';
-                            document.getElementById('myBlank').innerHTML = 'Send it by using the Submit documents service in <a>My Business Account</a> or by mail';
-                            document.getElementById('portal').innerText = 'My Business Account';
-                            document.getElementById('finalTable').classList.remove('hidden');">
-                            <label class="specialRadioLabel" for="step3-business">Business</label>
+                           <input class="specialRadio" type="radio" id="step3-business" name="step3-applying" value="" 
+                              onclick="document.getElementById('myAccount').innerText = 'Sign in to My Business Account'; 
+                              document.getElementById('finalTable').classList.remove('hidden');">
+                           <label class="specialRadioLabel" for="step3-business">Business</label>
                         </div>
                         <div class="radio-group">
-                            <input class="specialRadio" type="radio" id="step3-representative" name="step3-applying" value="" 
-                            onclick="document.getElementById('myAccount').innerText = 'Sign in to Represent a Client'
-                            document.getElementById('myBlank').innerHTML = 'Send it by using the Submit documents service in <a>Represent a Client</a> or by mail';
-                            document.getElementById('portal').innerText = 'Represent a Client';
-                            document.getElementById('finalTable').classList.remove('hidden');">
-                            <label class="specialRadioLabel" for="step3-representative">Representative</label>
+                           <input class="specialRadio" type="radio" id="step3-representative" name="step3-applying" value="" 
+                              onclick="document.getElementById('myAccount').innerText = 'Sign in to Represent a Client';
+                              document.getElementById('finalTable').classList.remove('hidden');">
+                           <label class="specialRadioLabel" for="step3-representative">Representative</label>
                         </div>
-                    </fieldset><br>
-                    <strong>Print responses:</strong>&nbsp;&nbsp;&nbsp;&nbsp;<button class="primary" type="button" onclick="toggleLB('responses')">View my responses</button>
-                    <div id = "finalTable" class="hidden">
+                     </fieldset>
+                     <br>
+                     <div id = "finalTable" class="hidden">
                         <table id="final-table" class="apply-table" cellpadding="0" cellspacing="0" cellspacing-horizontal="0">
-                            <tr>
-                            <th>Online:</th>
-                            <td>Use the web form online to request taxpayer relief. You must already be registered with <span id="portal"></span>.
-                                <br>
-                                <button id ="myAccount" class="greenPrimary" type="button">Sign in to My Account</button>
-                                <button class="tertiary" type="button">Register</button>
-                            </td>
-                            </tr>
-                            <tr id = "">
-                            <th>PDF form:</th>
-                            <td>
-                                <button class="accordion" id="pdfAccordion">Fill out a PDF version of the form, sign it and send it.</button>
-                                <div class="accordion-content" id ="reviewAccordionContent">
-                                    <!-- ACCORDION - GENERAL INFORMATION -->
-                                     <ul>
-                                    <li> Download the PDF and fill it out. Go to <a>RC4288 Request for Taxpayer Relief – Cancel or Waive Penalties and Interest.</a></li>
-                                    <li> Remember to have your supporting documents ready to include with your request</li>
-                                    <li id = "myBlank"> Send it by using the Submit documents service in My Account or by mail</li>
-                                </ul>
-                                </div>
-                            </td>
-                            </tr>
+                           <tr>
+                              <th>Option 1 - Online:</th>
+                              <td>Use the web form online to request taxpayer relief. 
+                                 <br>
+                                 <button id ="myAccount" class="greenPrimary" type="button">Sign in to My Account</button>
+                              </td>
+                           </tr>
+                           <tr>
+                              <th style="font-weight:normal;">OR</th>
+                           </tr>
+                           <tr id = "">
+                              <th>Option 2 - PDF form:</th>
+                              <td>
+                                 Download the PDF and fill it out. Go to <a>RC4288 Request for Taxpayer Relief – Cancel or Waive Penalties and Interest.</a>
+                              </td>
+                           </tr>
                         </table>
-                    </div>
-
-                    <div class="lightbox-container" id="responses">
-                        <div class="lightbox">
-                            <div class="header">
-                                <h3> <span class ="material-icons help2">help</span> Summary</h3>
-                                <button class="tertiary" type="button" onclick="toggleLB('responses')">
-                                <span class="material-icons">clear</span></button>
-                            </div>
-                            <div class="lightbox-content">
-                                <a class="printsavelink" href="#">Print/Save</a>
-                               
-                               <div class="panel-data">
-                                <h5>Provide general information</h5>
-                                <div class="row">
-                                    <div class="label">What type of charge did you get?</div>
-                                    <div class="valueWI">xxxxxxxxxxxxxxx</div>
-                                </div>
-                                <div class="row">
-                                    <div class="label">When did you receive the penalty?</div>
-                                    <div class="valueWI">XXXX-XXXX</div>
-                                </div>
-                                <h5>Describe your situation</h5>
-                                <div class="row">
-                                    <div class="label">I am requesting relief of penalties and interest due to:</div>
-                                    <div class="valueWI">xxxxxxxxxxxxxxx</div>
-                                </div>
-                                <div class="row">
-                                    <div class="label">What was the circumstance that prevented you from meeting your tax obligations?</div>
-                                    <div class="valueWI">xxxxxxxxxxxxxxx</div>
-                                </div>
-                                <div class="row">
-                                    <div class="label">Do you have any outstanding tax returns that have yet to be filed with the CRA?</div>
-                                    <div class="valueWI">---</div>
-                                </div>
-                                <div class="row">
-                                    <div class="label">Do you have the ability to borrow or do you have any assets that you could dispose of to pay the DRA debt in full?</div>
-                                    <div class="valueWI">---</div>
-                                </div>
-                                <h5>Learn about supporting documents</h5>
-                                <table id="sumandreview" class="sar-table" cellpadding="20" cellspacing="0" cellspacing-horizontal="40px">
-                                    <tr>
-                                        <th>Reason you selected:</th>
-                                        <th>Reason to select on the application form:</th>
-                                        <th>Recommended supporting documents:</th>
-                                    </tr>
-                                    <tr id="financialIndividual">
-                                        <td>
-                                        As an individual, paying what I owe to the CRA would make it difficult to afford basic necessities. For example, food, shelter, transportation, medical expenses.
-                                        </td>
-                                        <td>Financial hardship / individual</td>
-                                        <td>
-                                        <ul>
-                                            <li>Form RC376, Taxpayer Relief Request Statement of Income and Expenses and Assets and Liabilities for Individuals</li>
-                                            <li>Bank and credit card statements for the last 3 months</li>
-                                            <li>Current mortgage statements or rental agreements</li>
-                                            <li>Loans and monthly bills</li>
-                                        </ul>
-                                        </td>
-                                    </tr>
-                                    </table>
-                               </div>
-                            </table>        
-                           
-
-                                
-                            </div>
-                            <div class="buttons">
-                                <button class="tertiary close" type="button" onclick="toggleLB('responses')">Close</button>
-                            </div>
-                        </div>
-                        </div>
-
-                </div>
-                <br><br>
-                <button class="tertiary" type="button" onclick="navigateStep('previous')">Back</button>
-                <button class="primary" type="button">Return to Canada.ca</button>
-                </div>
+                     </div>
+                  </div>
+                  <br><br>
+                  <button class="tertiary" type="button" onclick="navigateStep('previous')">Back</button>
+                  <button class="primary" type="button">Return to Canada.ca</button>
+               </div>
             </div>
-        </div>
+         </div>
       </div>
       <script src="scripts.js"></script>
    </body>

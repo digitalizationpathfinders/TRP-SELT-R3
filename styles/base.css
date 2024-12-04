@@ -85,6 +85,12 @@ h5 {
   margin-bottom:8px;
   margin-top: 15px;
 }
+h6 {
+  font-size:18px;
+  margin-bottom:8px;
+  margin-top: 8px;
+
+}
 p {
   padding:0px;
   margin-left:0px;
